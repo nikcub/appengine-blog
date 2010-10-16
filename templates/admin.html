@@ -1,0 +1,17 @@
+$def with (posts)
+$var title: Blog Admin
+
+$for post in posts:
+	$post.date $post.title <br />
+<article>
+	<header>
+		<h2>Add Post</h2>
+	</header>
+	<p>
+		<form method="post" action="/post">
+			<input type="text" name="title" /><br />
+			<textarea name="content"></textarea><br />
+			<button type="submit">save</button>
+		</form>
+	</p>
+</article>

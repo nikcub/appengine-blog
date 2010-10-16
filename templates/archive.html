@@ -1,0 +1,15 @@
+$def with (posts, when)
+$var title: Nik Cubrilovic : Home
+
+<h1>Archive for $when</h1>
+
+$for post in posts:
+	<article> 
+		<header> 
+			<time datetime="2009-10-17" pubdate>$post.date</time> 
+			<h1> 
+				<a href="../semantics.html" rel="bookmark" title="link to this post">$post.title</a> 
+			</h1> 
+		</header> 
+		<p>$:post.content</p>
+	</article>

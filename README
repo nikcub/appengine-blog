@@ -1,0 +1,22 @@
+Unicorn
+
+A simple blogging tool built for Google App Engine on web.py
+
+Install
+
+Grab the App Engine SDK:
+
+  http://code.google.com/appengine/downloads.html
+
+Then run the demo via:
+
+  dev_appserver.py .
+
+Customize your "routes" via app.yaml
+
+Todo:
+
+@TODO 	support for pages
+@TODO	support for Atom feed
+@TODO	export / import
+@TODO	comments / users / moderation
