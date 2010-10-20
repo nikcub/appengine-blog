@@ -96,39 +96,6 @@ body > header > nav > ul > li > a:hover {
 	background: orange;
 }
 
-/* Admin Aside */
-
-body > aside {
-	height: 1em;
-	background: yellow;
-/*	width: 100%;*/
-	padding: 0.1em 10% 0.1em 10%;
-}
-
-body > aside > nav {
-	float: right;
-	font-size: 0.8em;
-	line-height: 0.8em;
-}
-
-body > aside > nav > ul {
-	list-style: none;
-}
-
-body > aside > nav > ul > li {
-	display: inline;
-}
-
-body > aside > nav > ul > li > a, 
-body > aside > nav > ul > li > a:visited, {
-/*	font-size: 0.8em;*/
-	float: left;
-	text-decoration: none;
-	text-decoration: center;
-	color: red;
-	width: 6em;
-}
-
 /* Article */
 
 body > article {

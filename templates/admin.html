@@ -1,17 +1,43 @@
-$def with (posts)
-$var title: Blog Admin
+{% extends "base.html" %}
 
-$for post in posts:
-	$post.date $post.title <br />
+{% block title %}{{ title }} >> Admin{% endblock %}
+
+{% block content %}
+{{ path }}
+<article>
+	<header>
+		<h2>Posts</h2>
+	</header>
+	<table id="admin_posts">
+		<thead>
+		<tr><td><input type="checkbox" id="check_all"></td><td>Title</td><td>Type</td><td>Status</td><td>Date</td><td>Author</td></tr>
+		</thead>
+		<tbody>
+		{% for post in posts %}
+			<tr>
+				<td></td>
+				<td>{{ post.title }}</td>
+				<td>{{ post.post_type }}</td>
+				<td>{{ post.status }}</td>
+				<td>{{ post.pubdate|date:"jS F Y" }}</td>
+				<td>{{ post.author }}</td>
+				<td><a href="/admin/edit/{{ post.key }}">edit</a></td>
+		{% endfor %}
+		</tbody>
+	</table>
+</article>
+
 <article>
 	<header>
 		<h2>Add Post</h2>
 	</header>
 	<p>
-		<form method="post" action="/post">
+		<form method="post" action="/post" id="admin_edit">
 			<input type="text" name="title" /><br />
 			<textarea name="content"></textarea><br />
-			<button type="submit">save</button>
+			<button type="submit" name="action" value="save">save</button>
+			<button type="submit" name="action" value="publish">publish</button>
 		</form>
 	</p>
 </article>
+{% endblock %}

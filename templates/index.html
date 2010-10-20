@@ -1,14 +1,32 @@
-$def with (posts, path)
-$var title: Nik Cubrilovic : Home
+{% extends "base.html" %}
 
-<h1>Path was $path</h1>
-$for post in posts:
+{% block title %}Nik Cubrilovic Blog{% endblock %}
+
+{% block content %}
+<h1>Path was {{ path }}</h1>
+{% for post in posts %}
+	{% if forloop.first %}
 	<article> 
 		<header> 
-			<time datetime="2009-10-17" pubdate>$post.date</time> 
+			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time> 
 			<h1> 
-				<a href="../semantics.html" rel="bookmark" title="link to this post">$post.title</a> 
+				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a> 
+				by {{ post.author }}
 			</h1> 
-		</header> 
-		<p>$:post.content</p>
+		</header>
+		<p>{{ post.pubdate|timesince }}</p>
+		<p>{{ post.title|slugify }}
+		<p>{{ post.content_html }}</p>
 	</article>
+	{% else %}
+	<article> 
+		<header> 
+			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> 
+			<h1> 
+				> <a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a> 
+			</h1> 
+		</header>
+	</article>
+	{% endif %}
+{% endfor %}
+{% endblock %}

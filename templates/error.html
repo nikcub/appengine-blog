@@ -1,8 +1,11 @@
-$def with (error)
-$var title: Nik Cubrilovic : File Not Found
+{% extends "base.html" %}
 
-<article>
-	<header>
-		<h1>$error</h1>
-	</header>
-</article>
+{% block title %}Nik Cubrilovic >> File Not Found{% endblock %}
+
+{% block content %}
+	<article> 
+		<header> 
+			<h1>{{ message }}</h1> 
+		</header>
+	</article>
+{% endblock %}

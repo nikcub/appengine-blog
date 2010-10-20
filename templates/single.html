@@ -3,15 +3,18 @@
 {% block title %}Nik Cubrilovic Blog{% endblock %}
 
 {% block content %}
-<h1>Path was {{ path }}</h1>
-{% for post in posts %}
+{% if post %}
+	{{ test_title }}
 	<article> 
 		<header> 
 			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> 
 			<h1> 
-				> <a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a> 
+				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a> 
 			</h1> 
 		</header>
+		<p>{{ post.content }}
 	</article>
-{% endfor %}
+{% else %}
+	<h1>File Not Found</h1>
+{% endif %}
 {% endblock %}

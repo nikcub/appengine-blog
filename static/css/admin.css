@@ -1,0 +1,63 @@
+#admin_posts {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#admin_posts td {
+	line-height: 1.8em;
+}
+
+#admin_edit input,
+#admin_edit textarea {
+	width: 80%;
+	margin-bottom: 2em;
+}
+
+#admin_edit textarea {
+	height: 150px;
+}
+
+/* Admin Aside Mainpage */
+
+body > #admin_nav {
+	height: 2em;
+	background: silver;
+	padding: 0.1em 10% 0.1em 10%;
+}
+
+body > #admin_nav > p {
+	float: left;
+	font-size: 1.2em;
+	line-height: 1.6667em;
+}
+
+body > #admin_nav > nav {
+	float: right;
+	font-size: 1.2em;
+	line-height: 1.6667em;
+}
+
+body > #admin_nav > nav > ul {
+	list-style: none;
+}
+
+body > #admin_nav > nav > ul > li {
+	display: inline;
+	float: left;
+	text-align: center;
+	width: 6em;
+	color: black;
+	text-transform: lowercase;
+}
+
+body > #admin_nav a,
+body > #admin_nav a:visited {
+	text-decoration: none;
+	color: black;
+	width: 100%;
+}
+
+body > #admin_nav a:hover {
+	text-decoration: underline;
+/*	background: red;*/
+}

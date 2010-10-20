@@ -1,4 +1,4 @@
-Unicorn
+Buckley
 
 A simple blogging tool built for Google App Engine on web.py
 
@@ -16,7 +16,13 @@ Customize your "routes" via app.yaml
 
 Todo:
 
-@TODO 	support for pages
+@TODO	secure URLs on draft etc.
+@TODO	ability to publish and categories
+@TODO	add a sidebar
 @TODO	support for Atom feed
+@TODO 	support for pages
+-- pub here
 @TODO	export / import
 @TODO	comments / users / moderation
+@TODO 	multi templates
+@TODO	support multiple URLs (ie. stub changed) with list of 'old' to match and redirect
