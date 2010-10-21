@@ -2,7 +2,7 @@ import sys, datetime, logging
 from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-from buckley.datatypes import HtmlFromMarkdownProperty
+from buckley.datatypes import *
 
 class Post(db.Model):
 	author = db.UserProperty()
@@ -13,7 +13,8 @@ class Post(db.Model):
 	post_type = db.StringProperty(choices = set(['post', 'page']))
 	status = db.StringProperty(required = True, choices = set(['draft', 'scheduled', 'published']))
 	categories = db.ListProperty(db.Category)
-	stub = db.StringProperty()
+	stub = StubFromTitleProperty(source = title, default = None)
+	permalink = db.StringProperty()
 	pubdate = db.DateTimeProperty(auto_now_add=True)
 	
 	def create_new(title, content, categories = []):
@@ -56,12 +57,22 @@ class Post(db.Model):
 		query = self.all().filter('post_type = ', 'post').filter('status = ', 'published').order('-pubdate')
 		return query.fetch(num)
 
+	def publish(self):
+		self.status = 'published'
+		self.put()
+
 	@classmethod
 	def get_all(self, num = 5):
-		# query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
-		query = self.all().order('-pubdate')
+		# query = db.Query(Post).filter('post_type = 'post').order('-pubdate')
+		query = self.all().filter('post_type =', 'post').order('-pubdate')
 		return query.fetch(num)
-			
+
+	@classmethod
+	def get_all_pages(self, num = 5):
+		# query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
+		query = self.all().filter('post_type =', 'pages').order('-pubdate')
+		return query.fetch(num)
+						
 	@classmethod
 	def get_last(self, num = 5):
 		# query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
@@ -112,22 +123,3 @@ class Post(db.Model):
 	def to_dict(self):
 		return dict([(p, unicode(getattr(self, p))) for p in self.properties()])
 
-	
-	def get_stub(self, title, inc = 1):
-		logging.info("Called with %s and %d" % (title, inc))
-		stub_exists = Post.stub_exists(self.slugify(title))
-		if stub_exists == False:
-			return self.slugify(title)
-		else:
-			inc = inc + 1
-			if inc > 2:
-				return self.get_stub("%s-%d" % (self.slugify(title[:-2]), inc), inc)
-			else:
-				return self.get_stub("%s-%d" % (self.slugify(title), inc), inc)
-
-	def slugify(self, value):
-	    value = re.sub('[^\w\s-]', '', value).strip().lower()
-	    return re.sub('[-\s]+', '-', value)
-				
-class Categories(db.Model):
-	name = db.StringProperty(required=True)

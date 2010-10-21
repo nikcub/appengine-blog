@@ -13,6 +13,12 @@ indexes:
 - kind: Post
   properties:
   - name: post_type
+  - name: pubdate
+    direction: desc
+
+- kind: Post
+  properties:
+  - name: post_type
   - name: status
   - name: pubdate
     direction: desc

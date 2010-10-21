@@ -1,1 +1,1 @@
-__all__ = ["markdown"]
+__all__ = ["markdown", "yaml"]

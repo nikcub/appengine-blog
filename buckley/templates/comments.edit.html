@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} >> Admin >> Edit Post{% endblock %}
+
+{% block content %}
+{% if post %}
+<article>
+	<header>
+		<h2>Edit Post</h2>
+	</header>
+	<p>
+		<form method="post" action="/admin/edit/{{ post.key}}" id="admin_edit">
+			<input type="text" name="title" value="{{ post.title }}"><br />
+			<input type="text" name="stub" value="{{ post.stub }}"><br />
+			<textarea name="content">{{ post.content }}</textarea><br />
+			<button type="submit" name="action" value="save">save</button>
+			<button type="submit" name="action" value="publish">publish</button>
+		</form>
+	</p>
+</article>
+{% else %}
+	<h1>Post Not Found</h1>
+{% endif %}
+{% endblock %}

@@ -75,7 +75,7 @@ def json(input):
     """ 
 	return GqlEncoder().encode(input)
 
-def atom(input):
+def xml(input):
 	return input
 	# AtomEncoder().encode(input)
 	

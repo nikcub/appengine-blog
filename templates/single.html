@@ -4,17 +4,15 @@
 
 {% block content %}
 {% if post %}
-	{{ test_title }}
-	<article> 
-		<header> 
-			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> 
-			<h1> 
-				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a> 
-			</h1> 
-		</header>
-		<p>{{ post.content }}
-	</article>
-{% else %}
-	<h1>File Not Found</h1>
+<article> 
+	<header> 
+		<h1> 
+			<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+		</h1>
+		<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time>  
+	</header>
+	<p>{{ post.content_html }}</p>
+	<p class="post_foot">By {{ post.author }} | Comments: 10</p>
+</article>
 {% endif %}
 {% endblock %}

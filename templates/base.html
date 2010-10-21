@@ -7,32 +7,20 @@
 	<meta name="application-name" content="">
 	<meta name="author" value="Nik Cubrilovic">
 	<meta name="description" value="Blog of Nik Cubrilovic">
-	<meta name="generator" value="Unicorn v0.1">
+	<meta name="generator" value="Buckley v0.1">
 	<link id="css-reset" rel="stylesheet" href="/css/reset.css" type="text/css">
 	<link id="css-core" rel="stylesheet" href="/css/style.css" type="text/css">
-	<link id="css-admin" rel="stylesheet" href="/css/admin.css" type="text/css">
 	<link id="feed-atom" rel="alternate" href="/feed" type="application/atom+xml" title="Nik Cubrilovic">
-	<script src="/js/jquery-1.4.3.min.js" type="text/javascript"></script>
-	<script src="/js/backbone.min.js" type="text/javascript"></script>
-	<script>
-		// $(document).ready(function () {
-		// 	$.ajax({
-		// 		url: '/',
-		// 		dataType: 'json',
-		// 		success: function(data) {
-		// 			console.log('Received:', data);
-		// 			$('#result').html(data);
-		// 		}
-		// 		});
-		// 	// loadStories();
-		// })
-		
-		var loadStories = function() {
-			console.log('load stories');
-			template = 'text';
-			// $('#stories').html('Stories here..' + template);
-			return 'Stories here.. ' + template;
-		}
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-19221650-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 	</script>
 </head>
 <body>
@@ -50,23 +38,6 @@
 		</ul>
 	</nav>
 </header>
-{% if admin %}
-<aside id="admin_nav">
-	<nav>
-		<ul>
-			<li>{{ user.nickname }}: </li>
-			<li><a href="/admin">Main</a></li>
-			<li><a href="/admin/posts">Posts</a></li>
-			<li><a href="/admin/pages">Pages</a></li>
-			<li><a href="/admin/comments">Comments</a></li>
-			<li><a href="{{ logout }}">Logout</a></li>
-		</ul>
-	</nav>
-</aside>
-<div id="result">
-	
-</div>
-{% endif %}
 {% block content %}{% endblock %}
 <footer>
 	<p>&copy; 2010 Nik Cubrilovic</p>
