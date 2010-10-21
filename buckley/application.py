@@ -1,11 +1,13 @@
 from google.appengine.ext.webapp import *
-
+import logging
 
 class AppAuthError(Exception):
 	pass
 	
 class Application(WSGIApplication):
 
+	_Application__debug = True
+	
 	def __call__(self, environ, start_response):
 		"""Called by WSGI when a request comes in."""
 		request = self.REQUEST_CLASS(environ)
@@ -24,7 +26,7 @@ class Application(WSGIApplication):
 					groups = match.groups()
 					break
 				except AppAuthError:
-					pass
+					logging.info('caught AppAuthError')
 
 		self.current_request_args = groups
 

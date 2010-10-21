@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Nik Cubrilovic Blog{% endblock %}
+{% block disqus %}{{ post.stub }}{% endblock %}
 
 {% block content %}
 {% if post %}
@@ -12,7 +13,7 @@
 		<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time>  
 	</header>
 	<p>{{ post.content_html }}</p>
-	<p class="post_foot">By {{ post.author }} | Comments: 10</p>
 </article>
+<div id="disqus_thread"></div>
 {% endif %}
 {% endblock %}

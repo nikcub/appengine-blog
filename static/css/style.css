@@ -96,25 +96,47 @@ body > header > nav > ul > li > a:hover {
 	background: orange;
 }
 
+/* Sidebar */
+
+#wrap {
+/*	float: left;*/
+	width: 80%;
+/*	padding: 0.5em 10% 0.5em 10%;	*/
+	margin: 0 auto;
+}
+
+#sidebar {
+	clear: both;
+	float: right;
+	width: 140px;
+	padding: 10px 5px 15px 5px
+}
+
+#main {
+	float: left;
+	width: 70%;
+	min-width: 470px;
+}
 /* Article */
 
-body > article {
-	width: 80%;
+#main > article {
+/*	float: left;*/
+	width: 100%;
 /*	max-width: 800px;*/
 	margin: 0 auto;
 	font-size: 1.2em;
 	margin-bottom: 3em;
-	margin-top: 2.5em;
+	margin-top: 10px;
 }
 
-body > article > header {
+#main > article > header {
 	height: 3em;
 /*	border-bottom: 1px solid silver;*/
 /*	border-top: 1px solid silver;*/
 	margin-bottom: 1.2em;
 }
 
-body > article > header > h1 {
+#main > article > header > h1 {
 	float: left;
 	font-size: 1.2em;
 	line-height: 2.5em;
@@ -122,47 +144,42 @@ body > article > header > h1 {
 	margin: 0;
 }
 
-body > article > header > time {
+#main > article > header > time {
 	float: right;
 	font-size: 0.8em;
 	line-height: 3.75em;
 }
 
-body > article > header > h1 > a,
-body > article > header > h1 > a:visited {
+#main > article > header > h1 > a,
+#main > article > header > h1 > a:visited {
 	text-decoration: none;
 	color: black;
 }
 
-body > article > p {
+#main > article > p {
 /*	word-spacing: 0em;*/
 /*	letter-spacing: 0;	*/
 	line-height: 1.8em;
 	margin-bottom: 1em;
 }
 
-body > article a {
+#main > article a {
 	text-decoration: none;
 }
-body > article a:hover {
+#main > article a:hover {
 	text-decoration: underline;
-}
-
-/* Sidebar */
-aside#sidebar {
-/*	float: right;
-	width: 15em;
-	margin-right: 5%;
-	min-height: 100em;
-	height: 100%;*/
 }
 
 /* Footer */
 
 footer {
+	float: left;
+	clear: both;
+	width: 100%;
 	text-align: center;
 	font-size: 1em;
 	line-height: 2em;
+	margin-top: 5em;
 }
 
 

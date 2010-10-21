@@ -21,9 +21,7 @@ class blog(reqhandlers.Base):
 				'posts': posts
 			})
 		else:
-			self.render_error()
-
-
+			self.render_error('File Not Found', 404)
 
 class SinglePostHandler(reqhandlers.Base):
 	def get(self, title):

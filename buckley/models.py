@@ -13,7 +13,8 @@ class Post(db.Model):
 	post_type = db.StringProperty(choices = set(['post', 'page']))
 	status = db.StringProperty(required = True, choices = set(['draft', 'scheduled', 'published']))
 	categories = db.ListProperty(db.Category)
-	stub = StubFromTitleProperty(source = title, default = None)
+	new_stub = StubFromTitleProperty(source = title, default = None)
+	stub = db.StringProperty()
 	permalink = db.StringProperty()
 	pubdate = db.DateTimeProperty(auto_now_add=True)
 	
@@ -69,8 +70,8 @@ class Post(db.Model):
 
 	@classmethod
 	def get_all_pages(self, num = 5):
-		# query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
-		query = self.all().filter('post_type =', 'pages').order('-pubdate')
+		query = db.Query(Post).filter('post_type =', 'page').order('-pubdate')
+		# query = self.all().filter('post_type =', 'pages').order('-pubdate')
 		return query.fetch(num)
 						
 	@classmethod
@@ -90,7 +91,10 @@ class Post(db.Model):
 	
 	@classmethod
 	def stub_exists(self, stub = ''):
-		query = db.GqlQuery("select * from Post where stub = :1", stub)
+		# query = db.GqlQuery("select * from Post where stub = :1", stub)
+		query = self.all().filter("stub = ", stub)
+		if not users.is_current_user_admin():
+			query.filter('status = ', 'published')
 		post = query.fetch(1)
 		if query.count() == 0:
 			return False

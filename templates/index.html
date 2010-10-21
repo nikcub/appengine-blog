@@ -10,7 +10,6 @@
 			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time> 
 			<h1> 
 				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
-				by {{ post.author }}
 			</h1> 
 		</header>
 		<p>{{ post.content_html }}</p>

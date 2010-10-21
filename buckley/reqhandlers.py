@@ -78,10 +78,14 @@ class Base(webapp.RequestHandler):
 			message = '<pre>%s</pre>' % (cgi.escape(lines, quote=True))
 		self.render_error(message, 500)
 
+	def slugify(self, value):
+		value = re.sub('[^\w\s-]', '', value).strip().lower()
+		return re.sub('[-\s]+', '-', value)
 	
 class Admin(Base):
 	def initialize(self, request, response):
-		super(Admin, self).initialize(request, response)
+		self.request = request
+		self.response = response
 		user = users.get_current_user()
 		if not user or not users.is_current_user_admin():
 			raise AppAuthError

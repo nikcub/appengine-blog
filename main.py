@@ -8,8 +8,12 @@ from buckley import *
 
 routes = [
 	('/archive(.*)', archive),
-	('/admin/posts(.*)', admin.Posts),
-	('/admin/pages(.*)', admin.Pages),
+	('/admin/posts/(.*)/(.*)', admin.Posts),
+	('/admin/posts/(.*)', admin.Posts),
+	('/admin/posts', admin.Posts),
+	('/admin/pages/(.*)/(.*)', admin.Pages),
+	('/admin/pages/(.*)', admin.Pages),
+	('/admin/pages', admin.Pages),
 	('/admin/settings', admin.Settings),
 	('/admin(.*)', admin.Settings),
 	('/(.*)\.html', SinglePostHandler),
@@ -18,10 +22,7 @@ routes = [
 
 def main():
 	app = Application(routes, debug=True)
-	# try:
 	run_wsgi_app(app)
-	# except AdminAuthError:
-		# print 'oh oh'
 
 if __name__ == '__main__':
 	main()

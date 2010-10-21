@@ -16,12 +16,13 @@ Customize your "routes" via app.yaml
 
 Todo:
 
-@TODO	secure URLs on draft etc.
-@TODO	ability to publish and categories
+# @TODO	secure URLs on draft etc.
+# @TODO	ability to publish and 
 @TODO	add a sidebar
 @TODO	support for Atom feed
-@TODO 	support for pages
+# @TODO 	support for pages
 -- pub here
+@TODO	categories
 @TODO	export / import
 @TODO	comments / users / moderation
 @TODO 	multi templates
