@@ -14,9 +14,15 @@ import serialize
 from application import *
 
 class Base(webapp.RequestHandler):
+	
+	_Plugins = {}
+	
 	def __init__(self):
 		self.conf = config('blog.yaml')
-		
+	
+	def plugin_register(self, plugin_name, plugin_inst):
+		self._Plugins[plugin_name] = plugin_inst
+
 	def render(self, template_name, vars, response_code = 200, response_type = False):
 		content = self.get_page(template_name, vars, response_type)
 		self.response.clear()
@@ -33,6 +39,7 @@ class Base(webapp.RequestHandler):
 		if not response_type:
 			response_type = self.get_response_type()
 		vars = self.get_template_vars(vars)
+		vars = self.get_plugin_vars(vars)
 		if response_type in ['xml', 'json']:
 			serial_f = getattr(serialize, response_type)
 			content = serial_f(vars)
@@ -40,6 +47,18 @@ class Base(webapp.RequestHandler):
 		else:
 			content = template.render(self.get_template_path(template_name, response_type), vars)
 		return content
+
+	def get_plugin_vars(self, vars):
+		for plugin in self._Plugins:
+			if hasattr(self._Plugins[plugin], "render"):
+				val_dict = self._Plugins[plugin].render()
+				if type(val_dict) == type({}):
+					for temp_var in val_dict:
+						if not vars.has_key(temp_var):
+							vars[temp_var] = val_dict[temp_var]
+				else:
+					logging.error("Did not get a valid dict type from plugin %s" % plugin)
+		return vars
 
 	def get_template_vars(self, vars):
 		additional = {

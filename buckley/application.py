@@ -1,5 +1,6 @@
 from google.appengine.ext.webapp import *
 import logging
+import os, types
 
 class AppAuthError(Exception):
 	pass
@@ -7,7 +8,40 @@ class AppAuthError(Exception):
 class Application(WSGIApplication):
 
 	_Application__debug = True
+
+	_Plugins = {}
 	
+
+	def _init_plugin_class(self, plugin_name):
+		fromlist = [plugin_name]
+		try:
+			module = __import__("plugins.%s.%s" % (plugin_name, plugin_name), globals(), {}, fromlist)
+		except ImportError:
+			module = __import__("plugins.%s" % (plugin_name), globals(), {}, fromlist)
+			
+		return getattr(module, plugin_name)()
+	
+
+	def _init_plugins(self, plugins):
+		for plugin in plugins:
+			# try:
+			plug_inst = self._init_plugin_class(plugin)
+			if plug_inst.set_config(plugins[plugin]):
+				self._Plugins[plugin] = plug_inst
+			# except ImportError, e:
+				# logging.error('could not import pluging %s: %s' % (plugin, e))
+			# except Exception, e:
+				# logging.error('Exception: %s' % e)
+
+
+	def __init__(self, url_mapping, plugins, debug=False):
+		self._init_url_mappings(url_mapping)
+		self._init_plugins(plugins)
+		self.__debug = debug
+		WSGIApplication.active_instance = self
+		self.current_request_args = ()
+
+
 	def __call__(self, environ, start_response):
 		"""Called by WSGI when a request comes in."""
 		request = self.REQUEST_CLASS(environ)
@@ -23,6 +57,11 @@ class Application(WSGIApplication):
 				try:
 					handler = handler_class()
 					handler.initialize(request, response)
+					if hasattr(handler, 'plugin_register'):
+						for pl in self._Plugins:
+							handler.plugin_register(pl, self._Plugins[pl])
+					else:
+						logging.error("Handler %s does not support plugin resitration" % handler.__name__)
 					groups = match.groups()
 					break
 				except AppAuthError:
