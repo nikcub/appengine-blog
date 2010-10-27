@@ -7,6 +7,7 @@ from vendor import *
 from buckley import *
 
 routes = [
+	('/feed(.*)', feed.Main),
 	('/archive(.*)', archive),
 	('/admin/posts/(.*)/(.*)', admin.Posts),
 	('/admin/posts/(.*)', admin.Posts),
@@ -16,6 +17,7 @@ routes = [
 	('/admin/pages', admin.Pages),
 	('/admin/settings', admin.Settings),
 	('/admin(.*)', admin.Settings),
+	('/projects(.*)', projects.Main),
 	('/(.*)\.html', SinglePostHandler),
 	('/(.*)', blog)
 ]
