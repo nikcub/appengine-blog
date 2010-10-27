@@ -12,7 +12,7 @@ class most_recent(Plugin_base):
 		
 	def render(self):
 		ret = {}
-		posts = Post.get_all(5)
+		posts = Post.get_last(5)
 		if self.get_conf('css_class'):
 			css_class = self.get_conf('css_class')
 		else:
