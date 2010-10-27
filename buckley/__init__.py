@@ -10,6 +10,8 @@ from archive import *
 from post import *
 from config import config
 from functions import *
+from projects import *
+from feed import *
 
 
 # __all__ = [""]
