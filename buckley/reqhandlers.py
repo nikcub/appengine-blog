@@ -75,6 +75,9 @@ class Base(webapp.RequestHandler):
 		return os.path.join(os.path.dirname(__file__), '..', 'templates', template_name + '.' + template_format)
 	
 	def get_response_type(self):
+		if not self.request.headers.has_key('accept'):
+			return 'html'
+			
 		accept = self.request.headers['accept'].split(',')
 		if accept[0] == 'application/json' or self.request.get('json'):
 			return 'json'
