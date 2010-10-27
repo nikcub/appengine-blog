@@ -28,7 +28,13 @@ class Base(webapp.RequestHandler):
 		self.response.clear()
 		self.response.set_status(response_code)
 		self.response.out.write(content)
-	
+
+	def render_feed(self, template_name, vars, response_code = 200, response_type = False):
+		content = template.render(self.get_template_path(template_name, 'xml'), vars)
+		self.response.clear()
+		self.response.set_status(response_code)
+		self.response.out.write(content)
+				
 	def render_error(self, message = False, code = 404):
 		self.render('error', { 
 			'code': '%d - %s' % (code, self.response.http_status_message(code)), 
