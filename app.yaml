@@ -18,14 +18,14 @@ handlers:
   mime_type: text/plain
 
 - url: /projects/forcessl.crx
-  static_files: static/fidelio.crx
-  upload: static/fidelio.crx
+  static_files: static/fidelio-1.0.4.crx
+  upload: static/fidelio-1.0.4.crx
   mime_type: application/x-chrome-extension
   expiration: 1m
 
 - url: /projects/force-ssl.crx
-  static_files: static/fidelio.crx
-  upload: static/fidelio.crx
+  static_files: static/fidelio-1.0.4.crx
+  upload: static/fidelio-1.0.4.crx
   mime_type: application/x-chrome-extension
   expiration: 1m
 
@@ -36,8 +36,8 @@ handlers:
   expiration: 1m
 
 - url: /projects/fidelio.crx
-  static_files: static/fidelio.crx
-  upload: static/fidelio.crx
+  static_files: static/fidelio-1.0.4.crx
+  upload: static/fidelio-1.0.4.crx
   mime_type: application/x-chrome-extension
   expiration: 1m
 
