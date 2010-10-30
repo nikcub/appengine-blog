@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Nik Cubrilovic Blog{% endblock %}
+{% block title %}Nik Cubrilovic Blog - {{ post.title }}{% endblock %}
 {% block disqus_script %}
 var disqus_identifier = "{{ post.stub }}";
 // var disqus_developer = 1;
