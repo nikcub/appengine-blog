@@ -15,7 +15,7 @@ class HtmlFromMarkdownProperty(db.TextProperty):
     def get_value_for_datastore(self, model_instance):
         value = self.source.get_value_for_datastore(model_instance)
         if value is not None:
-            html = markdown.markdown(value)
+            html = value
             return Text(html)
 
 class StubFromTitleProperty(db.StringProperty):
