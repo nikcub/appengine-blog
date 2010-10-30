@@ -3,6 +3,7 @@ import logging
 import traceback
 import sys
 import cgi
+import datetime
 
 from google.appengine.ext import webapp
 from google.appengine.ext import db
@@ -30,8 +31,10 @@ class Base(webapp.RequestHandler):
 		self.response.out.write(content)
 
 	def render_feed(self, template_name, vars, response_code = 200, response_type = False):
+		vars['buildDate'] = datetime.datetime.now()
 		content = template.render(self.get_template_path(template_name, 'xml'), vars)
 		self.response.clear()
+		self.response.headers['Content-Type'] = "application/%s; charset=utf-8" % ('xml')
 		self.response.set_status(response_code)
 		self.response.out.write(content)
 				
