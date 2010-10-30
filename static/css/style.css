@@ -22,14 +22,15 @@
 html {
 	background: white;
 	color: black;
-	font-size: 100%;
+	font-size: 12px;
 }
 body {
 	font-family: 'Cardo', 'Gill Sans', 'Gill Sans MT', Georgia, Candara, serif;
 	padding: 0;
 	margin: 0 auto;
 	width: 100%;
-	font-size: 10px;
+	font-size: 1em;
+	line-height: 16px;
 }
 
 /* Header */
@@ -165,11 +166,42 @@ body > header > nav > ul > li > a:hover {
 
 #main > article a {
 	text-decoration: none;
+	color: orange;
 }
 #main > article a:hover {
 	text-decoration: underline;
+	color: orange;
 }
 
+#main > article > ul {
+	padding-left: 1em;
+	line-spacing: 2em;
+	margin-bottom: 1em;
+}
+#main > article > ul > li {
+	line-spacing: 1.4em;
+	margin-bottom: 0.6em;
+}
+
+#main > article > ul li:before {
+	content: "\00BB \0020";
+}
+
+#sidebar {
+}
+#sidebar h3 {
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 1.6em;
+	margin-top: 10px;
+}
+#sidebar > p {
+	line-height: 1.6em;
+	font-size: 1.0em;
+}
+#sidebar > ul {
+	list-style: circle inside;
+}
 /* Footer */
 
 footer {
@@ -188,7 +220,7 @@ footer {
 code,
 pre,
 blockquote {
-	white-space: pre;	
+	white-space: pre-wrap;	
 	font-family: 'Menlo Regular','Courier New', courier, monospace;
 	font-size: small;
 }
