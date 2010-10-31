@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Nik Cubrilovic - Projects{% endblock %}
+
+{% block content %}
+<h1>Projects</h1>
+<p>I will be posting more information about each of these projects on the blog in the following days.</p>
+<article> 
+	<header> 
+		<h1> 
+			<a href="/projects/buckley" rel="bookmark" title="Fidelio">Buckley</a> 
+		</h1>
+	</header>
+	<p>Stage: <i>Alpha</i></p>
+	<p>A blogging tool written in Python for Google App Engine (powers this blog).</p>
+	<p>Features include JSON and XML API, generic asset types and a plugin architecture.</p>
+	<p>GitHub: <a href="http://github.com/projects/nikcub-blog/">nikcub-blog</a></p>
+</article>
+<article> 
+	<header> 
+		<h1> 
+			<a href="/projects/fidelio" rel="bookmark" title="Fidelio">Fidelio</a> 
+		</h1>
+	</header>
+	<p>Stage: <i>Beta</i></p>
+	<p>Chrome plugin that forces secure connections and secure cookies on sites specified by the user in the options page (Twitter and Facebook enabled by default).</p>
+	<p>Tested with GitHub, Amazon and other sites. Will also block widgets such as like buttons, and will never send cookies in the clear.</p>
+	<p>GitHub: <a href="http://github.com/projects/fidelio/">fidelio</a></p>
+</article>
+<article> 
+	<header> 
+		<h1> 
+			<a href="/projects/parley" rel="bookmark" title="Fidelio">Parley</a> 
+		</h1>
+	</header>
+	<p>Stage: <i>Alpha</i></p>
+	<p>A chrome privacy plugin. Blocks all third-party requests on web pages for a more private, secure and leaner web surfing experience</p>
+	<p>GitHub: <a href="http://github.com/projects/parley/">parley</a></p>
+</article>
+
+{% endblock %}
