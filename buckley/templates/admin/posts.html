@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} >> Admin{% endblock %}
+
+{% block content %}
+<article>
+	<header>
+		<h2>{{ post_type|capfirst }}</h2>
+	</header>
+	<table id="admin_posts">
+		<thead>
+		<tr>
+			<td><input type="checkbox" id="check_all"></td>
+			<td>Title</td>
+			<td>Type</td>
+			<td>Status</td>
+			<td>Date</td>
+			<td>Author</td>
+			<td></td>
+			<td></td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for post in posts %}
+			<tr>
+				<td></td>
+				<td>{{ post.title }}</td>
+				<td>{{ post.post_type }}</td>
+				<td>{{ post.status }}</td>
+				<td>{{ post.pubdate|date:"j M Y" }}</td>
+				<td>{{ post.author }}</td>
+				<td><a href="/admin/posts/edit/{{ post.key }}">edit</a></td>
+				<td><a href="/{{ post.stub }}">view</a></td>
+		{% endfor %}
+		</tbody>
+	</table>
+</article>
+
+<article>
+	<header>
+		<h2>Add {{ post_type|capfirst }}</h2>
+	</header>
+	<p>
+		<form method="post" action="/admin/posts" id="admin_edit">
+			<input type="text" name="title" /><br />
+			<textarea name="content"></textarea><br />
+			<input type="hidden" name="post_type" value="{{ post_type }}">
+			<button type="submit" name="action" value="save">save</button>
+			<button type="submit" name="action" value="publish">publish</button>
+		</form>
+	</p>
+</article>
+{% endblock %}

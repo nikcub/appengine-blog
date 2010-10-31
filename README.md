@@ -32,8 +32,10 @@ Easy!
 
 ## Todo
 
+@TODO   blog setup yaml file
+@TODO   cleanup object model
 @TODO	add a sidebar & cleanup style
-@TODO	support for Atom feed
+@TODO	support for Atom & RSS feeds
 @TODO	categories
 @TODO	export / import
 @TODO	comments / users / moderation

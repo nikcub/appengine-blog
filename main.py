@@ -1,12 +1,12 @@
 """
 A blogging tool
 """
-from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from vendor import *
 from buckley import *
 
 routes = [
+	('/favicon.ico', feed.Main),
 	('/feed(.*)', feed.Main),
 	('/archive(.*)', archive),
 	('/admin/posts/(.*)/(.*)', admin.Posts),

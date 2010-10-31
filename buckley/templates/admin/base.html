@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<base href=".">
+	<meta name="application-name" content="">
+	<meta name="author" value="Nik Cubrilovic">
+	<meta name="description" value="Blog of Nik Cubrilovic">
+	<meta name="generator" value="Unicorn v0.1">
+	<link id="css-reset" rel="stylesheet" href="/css/reset.css?004" type="text/css">
+	<link id="css-admin" rel="stylesheet" href="/css/admin.css?004" type="text/css">
+	<script src="/js/jquery-1.4.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Buckley</a></h1>      
+	<nav>
+		<ul>
+			<li><a href="#">{{ user.nickname }}</a></li>
+		</ul>
+	</nav>
+</header>
+<aside id="admin_nav">
+	<nav>
+		<ul>
+			<li><a href="/admin">Settings</a></li>
+			<li><a href="/admin/posts">Posts</a></li>
+			<li><a href="/admin/pages">Pages</a></li>
+			<li><a href="/admin/comments">Comments</a></li>
+			<li><a href="{{ logout }}">Logout</a></li>
+		</ul>
+	</nav>
+</aside>
+{% block content %}{% endblock %}
+<footer>
+	<p>&copy; 2010 Buckley</p>
+</footer>
+</body>
+</html>
