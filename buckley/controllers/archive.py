@@ -1,7 +1,7 @@
-import reqhandlers 
-from models import *
+import buckley
+from buckley.models import *
 
-class archive(reqhandlers.Base):
+class Archives(buckley.Controller):
 	def get(self, when):
 		if not when:
 			when = 'all'

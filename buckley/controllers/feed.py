@@ -1,7 +1,7 @@
-import reqhandlers 
-from models import *
+import buckley
+from buckley.models import *
 
-class Main(reqhandlers.Base):
+class Feeds(buckley.Controller):
 	"Defines projects"
 	def get(self, path):
 		posts = Post.get_last(10)

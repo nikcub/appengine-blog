@@ -1,10 +1,11 @@
 title: Nik Cubrilovic
 frontpage_posts: 10
+theme: default
 
 google_analytics:
   code: UA-19221650-1
   enabled: false
   
 disqus:
-  code: 
+  code: nikcub
   enabled: false

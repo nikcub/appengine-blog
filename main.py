@@ -5,21 +5,23 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from vendor import *
 from buckley import *
 
+
 routes = [
-	('/favicon.ico', feed.Main),
-	('/feed(.*)', feed.Main),
-	('/archive(.*)', archive),
-	('/admin/posts/(.*)/(.*)', admin.Posts),
-	('/admin/posts/(.*)', admin.Posts),
-	('/admin/posts', admin.Posts),
-	('/admin/pages/(.*)/(.*)', admin.Pages),
-	('/admin/pages/(.*)', admin.Pages),
-	('/admin/pages', admin.Pages),
-	('/admin/settings', admin.Settings),
-	('/admin(.*)', admin.Settings),
-	('/projects(.*)', projects.Main),
-	('/(.*)\.html', SinglePostHandler),
-	('/(.*)', blog)
+
+	# ('/admin/posts/(.*)/(.*)', controllers.admin.Posts),
+	# ('/admin/posts/(.*)', controllers.admin.Posts),
+	# ('/admin/posts', controllers.admin.Posts),
+	# ('/admin/pages/(.*)/(.*)', controllers.admin.Pages),
+	# ('/admin/pages/(.*)', controllers.admin.Pages),
+	# ('/admin/pages', controllers.admin.Pages),
+	# ('/admin/settings', controllers.admin.Settings),
+	# ('/admin(.*)', controllers.admin.Settings),
+	# 
+	# ('/feed(.*)', controllers.Feeds),
+	# ('/archive(.*)', controllers.Archives),
+	# ('/projects(.*)', controllers.Projects),
+	# ('/posts(.*)', controllers.posts.Index),
+	('/(.*)', controllers.posts.Index)
 ]
 
 plugins = {

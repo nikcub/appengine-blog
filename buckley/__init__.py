@@ -2,16 +2,11 @@
 """buckley make blog"""
 
 from models import *
-from reqhandlers import *
-from application import *
-# from admin import *
-import admin
-from archive import *
-from post import *
-from config import config
 from functions import *
-from projects import *
-from feed import *
+import config
+from application import *
+from controller import Controller
+import controllers
 
 
 # __all__ = [""]

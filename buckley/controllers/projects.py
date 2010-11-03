@@ -1,7 +1,7 @@
-import reqhandlers 
-from models import *
+import buckley
+from buckley.models import *
 
-class Main(reqhandlers.Base):
+class Projects(buckley.Controller):
 	"Defines projects"
 	def get(self, path):
 		self.render('projects', {})

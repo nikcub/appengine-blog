@@ -2,11 +2,10 @@ import sys, datetime, logging
 from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-from buckley.datatypes import *
+from datatypes import *
 
 class Asset(db.Model):
 	# key = stub
-	parent = db.ReferenceProperty(Asset)
 	author = db.UserProperty()
 	title = db.StringProperty(required=True)
 	excerpt = db.StringProperty(multiline=True)

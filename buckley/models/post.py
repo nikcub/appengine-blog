@@ -2,7 +2,7 @@ import sys, datetime, logging
 from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-from buckley.datatypes import *
+from datatypes import *
 
 class Post(db.Model):
 	author = db.UserProperty()
@@ -29,6 +29,7 @@ class Post(db.Model):
 			cats.append(db.Category(category))
 			
 		post = Post(
+			key_name = self.get_stub(title),
 			title = title,
 			excerpt = content[:250],
 			content = content, 
