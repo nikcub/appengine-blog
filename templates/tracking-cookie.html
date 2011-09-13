@@ -1,0 +1,43 @@
+{% extends "base_new.html" %}
+
+{% block title %}Nik Cubrilovic - Tracking Cookie{% endblock %}
+
+{% block content %}
+
+<style>
+.whooo_form {
+	border: 1px solid silver;
+	padding: 1em;
+	margin-bottom 15px;
+	padding-bottom: 5px;
+}
+
+h3 {
+	margin-top: 10px;
+}
+</style>
+<article> 
+	<header> 
+		<h1>Tracking Cookie</h1>
+	</header>
+	<p>This page will set a tracking cookie to the visiting browser using HTTP headers. See the <a href="/">post here</a>
+describing the technique for more information.</p>
+	<div class="whooo_form">
+		<p><code>{{ msg }}</code></p>
+		<form action="/tracking-cookie" method="GET">
+			<button name="_action" value="etag">Set ETag header</button>
+			<button name="_action" value="lm">Set Last-Modified header</button>
+		</form>
+	</div>
+	<h3>ETag</h3>
+	<p><code>Etag: {{ etag }}</code></p>
+	<h3>Last-Modified</h3>
+	<p><code>If-Modified-Since: {{ lm }}</code></p>
+	<h3>Full Browser Request</h3>
+	<p><code>{{ req.Connection }}</code></p>
+	<h3>Full Server Response</h3>
+	<p><code>{{ res }}</code></p>
+</article>
+
+
+{% endblock %}

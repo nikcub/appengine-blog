@@ -1,0 +1,5 @@
+cron:
+- description: update page cache
+  url: /blog-admin/tools/cache?task=update
+  schedule: every 24 hours
+  

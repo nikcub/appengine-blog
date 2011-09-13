@@ -1,0 +1,38 @@
+{% extends "base_new.html" %}
+
+{% block title %}Nik Cubrilovic Blog - {{ post.title }}{% endblock %}
+{% block disqus_script %}
+var disqus_identifier = "{{ post.stub }}";
+// var disqus_developer = 1;
+var disqus_url = "http://nikcub.appspot.com/{{ post.stub }}";
+{% endblock %}
+
+{% block content %}
+{% if post %}
+<article> 
+	<header> 
+		<h1>{{ post.title }}</h1>
+		<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time>
+			<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">#</a>
+	</header>
+	<p>{{ post.content_html }}</p>
+	<p>
+		<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="nikcub">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<iframe src="http://www.facebook.com/plugins/like.php?app_id=204986469525572&amp;href&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>
+	</p>
+
+	<!-- <p><a href="http://nikcub.appspot.com/{{ post.stub }}#disqus_thread">Comments</a></p> -->
+	<div id="disqus_thread" style="margin-top: 4em;"></div>
+	<script type="text/javascript">
+	  /**
+	    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+	    */
+	  (function() {
+	   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	   dsq.src = 'http://nikcub.disqus.com/embed.js';
+	   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+	</script>
+</article>
+{% endif %}
+{% endblock %}

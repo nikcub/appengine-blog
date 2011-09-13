@@ -1,0 +1,61 @@
+{% extends "base_new.html" %}
+
+{% block title %}Nik Cubrilovic - Projects{% endblock %}
+
+{% block content %}
+<style>
+article img {
+	float: left;
+	width: 64px;
+	height: 64px;
+	margin-right: 22px;
+	margin-bottom: 62px;
+}
+</style>
+<article>
+	<header>
+		<h1>Projects</h1>
+	</header>
+	<p>I will be posting more information about each of these projects at some point. There are many other projects not listed here on <a href="http://github.com/nikcub">Github</a> and <a href="http://bitbucket.org/nik">Bitbucket</a></p>
+</article>
+<article> 
+	
+	<header>
+		<h4><a href="/projects/parley" rel="bookmark" title="Parley">Parley</a></h4>
+	</header>
+	<p><img src="/img/parley-128.png"></p>
+	<p>Stage: <i>Alpha</i></p>
+	<p>A chrome privacy plugin. Blocks all third-party requests on web pages for a more private, secure and leaner web surfing experience</p>
+	<p>GitHub: <a href="http://github.com/nikcub/parley/">parley</a></p>
+	<p>Install: <a href="http://nikcub.appspot.com/projects/parley.crx">Chrome</a></p>
+</article>
+<article>
+	
+	<header> 
+		<h4> 
+			<a href="/projects/plusblock" rel="bookmark" title="Blockplus">BlockPlus</a> 
+		</h4>
+	</header>
+	<p><img src="/img/blockplus-128.png"></p>
+	<p>Stage: <i>Released</i></p>
+	<p>Browser plugin to block Google Plus links, icons, notifiers etc. from other Google properties such as search and Gmail.</p>
+	<p>BitBucket: <a href="https://bitbucket.org/nik/blockplus/">blockplus</a></p>
+	<p>Install: <a href="https://bitbucket.org/nik/blockplus/src/c4bf52a38c18/chrome/build/blockplus-1.0.0.crx">Chrome</a></p>
+</article>
+<article> 
+	
+	<header>
+		<h4> 
+			<a href="/projects/fidelio" rel="bookmark" title="Fidelio">Fidelio</a> 
+		</h4>
+	</header>
+	<p><img src="/img/forcessl-128.png"></p>
+	<p>Stage: <i>Beta</i></p>
+	<p>Chrome plugin that forces secure connections and secure cookies on sites specified by the user in the options page (Twitter and Facebook enabled by default).</p>
+	<p>Tested with GitHub, Amazon and other sites. Will also block widgets such as like buttons, and will never send cookies in the clear.</p>
+	<p>GitHub: <a href="http://github.com/nikcub/fidelio/">fidelio</a></p>
+	<p>Install: <a href="http://nikcub.appspot.com/projects/fidelio.crx">Chrome</a></p>
+</article>
+
+
+{% endblock %}

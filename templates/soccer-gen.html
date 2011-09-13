@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Nik Cubrilovic - Projects{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+(function(ctx) {
+	console.info('running in', ctx);
+})(this);
+</script>
+<style>
+	select {
+		width: 150px;
+		margin-bottom: 15px;
+	}
+</style>
+<article>
+<h1>/r/soccer Match Thread Generator</h1>
+<p>Generates match thread template for reddit's <a href="http://www.reddit.com/r/soccer">/r/soccer</a> forum.</p>
+<p>Currently only supports Premier League fixtures. Coming soon for other leagues, including the MLS</p>
+<p>For more info, <a href="http://www.reddit.com/message/compose/?to=nikcub&subject=match%20thread%20generator">privmsg nikcub</a> on reddit.</p>
+<h1>generator form</h1>
+<p>Current date is {{ date }} ({{ date_short }})</p>
+<h1>Debug</h1>
+<p><code>
+	{{ f_raw }}
+</code></p>
+<form action="/soccer-gen">
+	<h2>1. Pick A League</h3>
+	<p><select id="league"><option>EPL</option></select></p>
+	<h2>2. Pick a fixture</h3>
+	<p></p>
+	<h2>2. Generated Output</h3>
+	<p><i>Copy and paste this into a new text thread</p>
+	<p><textarea></textarea></p>
+	<p><button>Regen</button></p>
+</form>
+</article>
+
+{% endblock %}

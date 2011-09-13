@@ -1,0 +1,9 @@
+*.pyc
+.DS_Store?
+Thumbs.db
+Icon?
+var/
+.DS_Store
+*_old
+var
+*_backup

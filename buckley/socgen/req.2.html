@@ -1,0 +1,101 @@
+
+	<form method="get" action="" class="select-league">
+		<select name="select-league" onchange="window.location = this.options[this.selectedIndex].value;">
+			<option value="/scores/_/date/20110814">All Scores</option><option value="/scores/_/league/fifa.world.u20/date/20110814">U-20 World Cup</option><option selected="selected" value="/scores/_/league/eng.1/date/20110814">Barclays Premier League</option><option value="/scores/_/league/eng.2/date/20110814">English League Championship</option><option value="/scores/_/league/sco.1/date/20110814">Scottish Premier League</option><option value="/scores/_/league/esp.super_cup/date/20110814">Spanish Super Cup</option><option value="/scores/_/league/ita.coppa_italia/date/20110814">Italian Coppa Italia</option><option value="/scores/_/league/ger.1/date/20110814">German Bundesliga</option><option value="/scores/_/league/ger.2/date/20110814">German 2. Bundesliga</option><option value="/scores/_/league/fra.1/date/20110814">French Ligue 1</option><option value="/scores/_/league/ned.1/date/20110814">Dutch Eredivisie</option><option value="/scores/_/league/por.1/date/20110814">Portuguese Liga</option><option value="/scores/_/league/rus.1/date/20110814">Russian Premier League</option><option value="/scores/_/league/bel.1/date/20110814">Belgian Jupiler League</option><option value="/scores/_/league/aut.1/date/20110814">Austrian Bundesliga</option><option value="/scores/_/league/den.1/date/20110814">Danish SAS-Ligaen</option><option value="/scores/_/league/swe.1/date/20110814">Swedish Allsvenskanliga</option><option value="/scores/_/league/sui.1/date/20110814">Swiss Super League</option><option value="/scores/_/league/wal.1/date/20110814">Welsh Premier League</option><option value="/scores/_/league/usa.1/date/20110814">Major League Soccer</option><option value="/scores/_/league/mex.1/date/20110814">Primera División de México</option><option value="/scores/_/league/bra.1/date/20110814">Futebol Brasileiro</option><option value="/scores/_/league/chi.1/date/20110814">Primera División de Chile</option><option value="/scores/_/league/uru.1/date/20110814">Primera División de Uruguay</option><option value="/scores/_/league/per.1/date/20110814">Primera Profesional de Perú</option><option value="/scores/_/league/ecu.1/date/20110814">Primera A de Ecuador</option><option value="/scores/_/league/ecu.2/date/20110814">Ecuador Serie B</option><option value="/scores/_/league/crc.1/date/20110814">Primera División de Costa Rica</option><option value="/scores/_/league/gua.1/date/20110814">Liga Nacional de Guatemala</option><option value="/scores/_/league/hon.1/date/20110814">Primera División de Honduras</option><option value="/scores/_/league/jpn.1/date/20110814">Japanese J League</option><option value="/scores/_/league/rsa.1/date/20110814">South African Premiership</option>
+		</select>
+	</form>
+	
+
+<div class="updates-dates">
+	<span style="margin-left:0px;">All kick-off times in
+		EST.
+	</span>
+	<ul class="game-dates">
+		<li class="{date:'Sat, Aug 13 2011'}"><a href="/scores?date=20110813&league=eng.1&cc=3436">&laquo; Sat, Aug 13</a> |</li><li id="currentDate" class="selected {date:'Sun, Aug 14 2011'}">Sun, Aug 14, 2011</li><li class="{date:'Mon, Aug 15 2011'}">| <a href="/scores?date=20110815&league=eng.1&cc=3436">Mon, Aug 15 &raquo;</a></li>
+	</ul>
+</div>
+
+<script>
+(function($) {
+
+	var gamesContainer = $("#content #today-games"),
+	currentDateContainer = $("#currentDate"),
+	getFullYear='getFullYear',
+	getMonth='getMonth',
+	getDate='getDate',
+	getDay='getDay',
+	formatDate = function(d) { d=d+""; if(d.length<2) d="0"+d; return d;},
+	formatMonth = function(m) { m++; m=m+""; if(m.length<2) m="0"+m; return m;},
+	dateToURIString = function(d) {return d[getFullYear]()+formatMonth(d[getMonth]())+formatDate(d[getDate]())},
+	prevDate = function(d) { return new Date(d[getFullYear](),d[getMonth](),d[getDate]()-1); },
+	nextDate = function(d) { return new Date(d[getFullYear](),d[getMonth](),d[getDate]()+1); },
+	data = currentDateContainer.metadata(),
+	currentDate = (typeof data.date !== 'undefined') ? new Date(Date.parse(data.date)) : new Date();;
+
+
+	currentDateContainer.next().find("a").one("click", function() {
+		data = currentDateContainer.next().metadata(),
+		gamesDate = (typeof data.date !== 'undefined') ? new Date(Date.parse(data.date)) : new Date();
+		getGamesAjax($(this), gamesDate, "next");
+
+		return false;
+	});
+
+	currentDateContainer.prev().find("a").one("click", function() {
+		data = currentDateContainer.prev().metadata(),
+		gamesDate = (typeof data.date !== 'undefined') ? new Date(Date.parse(data.date)) : new Date();
+		getGamesAjax($(this), gamesDate, "prev");
+
+		return false;
+	});
+
+
+	getGamesAjax = function(jQueryThis, gamesDate, direction) {
+
+		$.ajax({
+			type:'GET',
+			url: jQueryThis.attr("href"),
+			dataType: 'html',
+			cache: true,
+			success: function(data) {
+				gamesContainer.html(data);
+
+				// MONTH HAS CHANGED
+				if(currentDate.getMonth() != gamesDate.getMonth() ) {
+					// UNBIND CURRENT CALENDAR LINKS
+					$("#content").find(".scores-calendar a").unbind("click");
+
+					// REMOVE OLD CALENDAR
+					if($('div.sc-cal:visible').get(0)) {
+						$('div.sc-cal').remove();
+					}
+
+					// DRAW NEW CALENDAR
+					drawScoreboardCalendar();
+
+				}else {
+					a = $("#content").find(".scores-calendar a");
+
+					a.each(function(i) {
+					    if($(this).parent().hasClass("active") ) {
+							$(a.get(i)).parent().removeClass("active");
+
+							index = i*1+1;
+							if(direction=="prev") {
+								index = i*1-1;
+							}
+							$(a.get(index)).parent().addClass("active");
+
+					    	return false;
+					    }
+					})
+				}
+
+				// TRACK OMNITURE
+				anTrackSoccernet(0,'soccernet','livescores','scoreboard','','scoreboard','','en_uk','soccer', 'eng.1');
+			}
+		});
+	}
+
+})(jQuery);
+</script><div class="group-set"><div class="mod-header"><h2><a href="/scores/_/league/eng.1/date/20110814/barclays-premier-league">Barclays Premier League</a></h2><div class="live-tables"><a class="table" href="/tables?league=eng.1">Table &raquo;</a><a style="display:none;" class="livetable" href="/livetables?league=eng.1" target="_blank">Live Table &raquo;</a></div></div></div><div class="gamebox" id="318050-gamebox"><div class="scores-top"><ul class="teams"><li class="status">22:30</li><li class="home teamId-336"><a href="/team/_/id/336">Stoke City</a></li><li class="scores"><a href="/gamecast/_/id/318050">v</a></li><li class="away teamId-363"><a href="/team/_/id/363">Chelsea</a></li></ul></div><div class="scores-links"><a href="/match?id=318050&league=ENG.1">Match Stats</a> | <a href="/gamecast?id=318050&league=ENG.1">GameCast</a></div></div><div class="gamebox" id="318256-gamebox"><div class="scores-top"><ul class="teams"><li class="status">Aug 15, 01:00</li><li class="home teamId-383"><a href="/team/_/id/383">West Bromwich Albion</a></li><li class="scores"><a href="/gamecast/_/id/318256">v</a></li><li class="away teamId-360"><a href="/team/_/id/360">Manchester United</a></li></ul></div><div class="scores-links"><a href="/match?id=318256&league=ENG.1">Match Stats</a> | <a href="/gamecast?id=318256&league=ENG.1">GameCast</a></div></div>

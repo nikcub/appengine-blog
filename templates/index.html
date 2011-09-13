@@ -1,0 +1,29 @@
+{% extends "base_new.html" %}
+
+{% block title %}Nik Cubrilovic Blog{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+	{% if forloop.first %}
+	<article> 
+		<header> 
+			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time> 
+			<h1> 
+				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+			</h1> 
+		</header>
+		<p>{{ post.content_html }}</p>
+	</article>
+	<article><h3>Older Posts</h3></article>
+	{% else %}
+	<article> 
+		<header> 
+			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> - 
+			<b> 
+				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+			</b> 
+		</header>
+	</article>
+	{% endif %}
+{% endfor %}
+{% endblock %}
