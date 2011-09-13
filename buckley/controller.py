@@ -91,7 +91,6 @@ class Controller(webapp.RequestHandler):
 		if not self.request.headers.has_key('accept'):
 			return 'html'
 
-			
 		accept = self.request.headers['accept'].split(',')
 		if accept[0] == 'application/json' or self.request.get('json'):
 			return 'json'

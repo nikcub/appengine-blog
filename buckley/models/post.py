@@ -92,6 +92,7 @@ class Post(db.Model):
 		if not month:
 			month = datetime.datetime.now().month
 		if not year:
+			
 			year = datetime.datetime.now().year
 	
 	@classmethod

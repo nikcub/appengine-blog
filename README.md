@@ -41,3 +41,4 @@ Easy!
 @TODO	comments / users / moderation
 @TODO 	multi templates
 @TODO	support multiple URLs (ie. stub changed) with list of 'old' to match and redirect
+@TODO	timezone support with pytz (import pytz)
