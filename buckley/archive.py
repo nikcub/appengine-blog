@@ -7,8 +7,9 @@ class archive(reqhandlers.Base):
 			when = 'all'
 		# arch = 'month'
 		# posts = db.GqlQuery("SELECT * FROM Post ORDER BY date DESC LIMIT 10")
-		posts = Post.get_posts_published_cached(100)
+		posts, src = Post.get_posts_published_cached(100)
 		self.render('archive', {
 			'posts': posts,
-			'tab_archive': True
+			'tab_archive': True,
+			'src': src,
 		})
