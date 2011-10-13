@@ -61,7 +61,7 @@ class Post(db.Model):
 
   @classmethod
   def get_posts_published_cached(self, num = 10, cache = False):
-    dat_key = "%s.%s" % ('models', 'index')
+    dat_key = "%s.%s" % ('models.' + str(num), 'index')
     dat = memcache.get(dat_key)
     if dat is not None and cache == False:
       return dat, 'memcache'
