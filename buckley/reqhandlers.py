@@ -92,7 +92,7 @@ class Base(webapp.RequestHandler):
       'login': users.create_login_url('/'),
       'static_host': choice(stat_hosts),
       'css_file': css_file,
-      'css_ver': '020',
+      'css_ver': '025',
       'src': 'database',
       # 'title': self.conf_get('title')
     }
