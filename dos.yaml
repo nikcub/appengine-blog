@@ -1,1 +1,25 @@
 blacklist:
+- subnet: 184.106.83.185
+  description: multireq asshole
+- subnet: 199.59.149.0/24
+  description: two
+- subnet: 184.73.126.115
+  description: two
+- subnet: 178.63.203.164
+  description: two
+- subnet: 107.20.42.241
+  description: two
+- subnet: 91.215.180.89
+  description: two
+- subnet: 184.73.156.247
+  description: two
+- subnet: 174.129.42.87
+  description: two
+- subnet: 208.78.42.180
+  description: two
+- subnet: 184.73.108.194
+  description: two
+- subnet: 173.192.79.101
+  description: two
+- subnet: 184.72.46.215
+  description: two

@@ -6,14 +6,18 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from vendor import *
 from buckley import *
 
+import buckley
 
 routes = [
 	('/feed(.*)', feed.Main),
-	('/about', about),
+	('/contact', buckley.pages.Contact),
+	('/about', buckley.pages.About),
 	('/archive(.*)', archive),
 	('/admin/posts/(.*)/(.*)', admin.Posts),
 	('/admin/posts/(.*)', admin.Posts),
 	('/admin/posts', admin.Posts),
+	('/admin/cache', admin.Cache),
+	('/admin/cache_page/(.*)', admin.CacheView),
 	('/admin/pages/(.*)/(.*)', admin.Pages),
 	('/admin/pages/(.*)', admin.Pages),
 	('/admin/pages', admin.Pages),
@@ -24,7 +28,6 @@ routes = [
 	('/soccer-gen', soccergen.SoccerGen),
 	('/password-gen', projects.PasswordGen),
 	('/tracking-cookie', projects.TrackingCookie),
-	('/(.*)\.html', SinglePostHandler),
 	('/(.*)', blog)
 ]
 

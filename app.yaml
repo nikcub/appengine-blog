@@ -5,6 +5,59 @@ api_version: 1
 default_expiration: "1h"
 
 handlers:
+# cached posts
+# - url: /
+#   static_files: cache/index
+#   upload: cache/index
+#   mime_type: text/html
+#   expiration: 4h
+# 
+
+- url: /google6492338f4f40e3db.html
+  static_files: static/google6492338f4f40e3db.html
+  upload: static/google6492338f4f40e3db.html
+  mime_type: text/html
+
+# - url: /(test-post-published)
+#   static_dir: cache
+#   mime_type: text/html
+
+# - url: /logging-out-of-facebook-is-not-enough
+#   static_files: cache/logging-out-of-facebook-is-not-enough
+#   upload: cache/logging-out-of-facebook-is-not-enough
+#   mime_type: text/html
+#   expiration: 1d
+# 
+# - url: /facebook-fixes-logout-issue-explains-cookies
+#   static_files: cache/facebook-fixes-logout-issue
+#   upload: cache/facebook-fixes-logout-issue
+#   mime_type: text/html
+#   expiration: 6h
+  
+- url: /fb-headers.txt
+  static_files: static/fb-headers.txt
+  upload: static/fb-headers.txt
+  mime_type: text/plain
+  expiration: 1d
+
+- url: /fb-table.html
+  static_files: static/fb-table.html
+  upload: static/fb-table.html
+  mime_type: text/html
+  expiration: 1d
+
+- url: /bsd-license.txt
+  static_files: static/bsd-license.txt
+  upload: static/bsd-license.txt
+  mime_type: text/plain
+  expiration: 1d
+
+- url: /bsd-license
+  static_files: static/bsd-license.txt
+  upload: static/bsd-license.txt
+  mime_type: text/plain
+  expiration: 1d
+
 # Most browsers request favicon
 - url: /favicon\.ico
   static_files: static/favicon.ico

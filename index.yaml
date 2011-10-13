@@ -21,4 +21,10 @@ indexes:
   - name: post_type
   - name: status
   - name: pubdate
+
+- kind: Post
+  properties:
+  - name: post_type
+  - name: status
+  - name: pubdate
     direction: desc
