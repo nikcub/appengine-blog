@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="lrt">
+<head>
+	<meta charset="utf-8" />
+	<title>PageTitle</title>
+	<style>
+	table th, table td {
+			padding: 0px;
+			line-height: 11px;
+			font-size: 11px
+			text-align: left;
+			vertical-align: middle;
+			border-bottom: 1px solid #DDD;
+		}
+		table { 
+			width: 100%;
+			border-collapse: collapse;
+			border: 1px solid #ccc;
+			font-size: 9px;
+			margin: 0;
+			padding: 0;
+		}
+		thead {
+/*			border-bottom: 2px solid black;*/
+		}
+		th {
+			border-right: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+		}
+		thead > tr{
+			font-weight: bold;
+			border-bottom: 2px solid black;
+/*			border-bottom: 2px solid black;*/
+		}
+		tbody {
+			font-size: small;
+		}
+		tr {
+/*			border-bottom: 1px solid silver;*/
+		}
+		td {
+			border: 1px solid #CCC;
+			font-size: 9px;
+			margin: 0;
+			padding: 0;
+		}
+		.headers {
+			font-weight: bold;
+		}
+		td {
+			width: 20%;
+			overflow: hidden;
+		}
+		td.cname {
+			font-weight: bold;
+			width: 100px;
+		}
+		tr.pres {
+			background-color: #B3FF99;
+		}
+		tr.sess_pres {
+			background-color: #FFFFC8;
+		}
+		tr.deleted {
+			background-color: #FFCECE;
+		}
+		td.clear {
+			background-color: transparent;
+			background-color: white;
+		}
+		td.new { 
+			background-color: #8CD1E6
+		}
+		td.on_logout {
+			background-color: ;
+		}
+		tr.explainer > th {
+			font-style: italic;
+			font-weight: normal;
+			padding: 3px 7px 3px 7px;
+		}
+	</style>
+	
+</head>
+<body id="home">
+
+<table style="width: 150px; margin-bottom: 25px">
+	<caption>Key for table</caption>
+	<tr class="pres"><td>Cookies preserved with identical value</td></tr>
+	<tr class="sess_pres"><td>Cookies preserved with identical value until browser restarted</td></tr>
+	<tr class="deleted"><td>Cookies deleted on logout request</td></tr>
+	<tr class="new"><td class="new">Cookies added after logout request</td></tr>
+</table>
+
+<table cellpadding="0" cellspacing="0">
+	<thead>
+		<tr><th>Request ></th><th>1. LoggedIn ></th><th>2. Logout Action > </th><th>3. Logged Out > </th><th>4. Logged Out (After Restart) ></th></tr>
+		<tr class="explainer"><th></th><th>A request made to the facebook homepage while logged in</th><th>The request to logout and the server actions made on logout</th><th>A fresh request to the Facebook homepage made after logging out.</th><th>A fresh request made to the facebook homepage after logging out and restarting the browser (ie. cookies that are retained)</th></tr>
+	</thead>
+	<tbody>
+		<tr class="headers"><td>Cookie Name</td><td>Value</td><td>Action</td><td>Value</td><td>Value</td></tr>
+		<tr class="pres"><td class="cname">datr</td><td>_j4YTtXpGklznKteLeSuKD1i;</td><td></td><td>_j4YTtXpGklznKteLeSuKD1i;</td><td>_j4YTtXpGklznKteLeSuKD1i;</td></tr>
+		<tr class="pres"><td class="cname">lu</td><td>TgB5t6VTnD8y5V3wcKPGv9uw;</td><td>expiry reset to 2013</td><td>TAB5t6VTnD8y5V3wcKPGv9uw;</td><td>TAB5t6VTnD8y5V3wcKPGv9uw; </td></tr>
+		<tr class="pres"><td class="cname">p</td><td>236;</td><td></td><td>236;</td><td>236;</td></tr>
+		<tr class="deleted"><td class="cname">pk</td><td>af478d0c13df8f77519651bfc6110373;</td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="sess_pres"><td class="cname">a_user</td><td>500073819;</td><td></td><td>500073819;</td><td class="clear"> </td></tr>
+		<tr class="sess_pres"><td class="cname">a_xs</td><td>2629065d42d539987caac05032f14b07;</td><td></td><td>2629065d42d539987caac05032f14b07</td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">sid</td><td>1;</td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">c_user</td><td>500073819; </td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="pres"><td class="cname">L</td><td>2; </td><td></td><td>2;</td><td>2;</td></tr>
+		<tr class="deleted"><td class="cname">sct</td><td>1313155413; </td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">xs</td><td>1%3A232328b9937720ff0f189e5f17c41151; </td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="pres"><td class="cname">act</td><td>1316962370811/2; </td><td></td><td>1316972790935/11;</td><td>1317032073811/0; </td></tr>
+		<tr class="deleted"><td class="cname">presence</td><td>EM316972753[..];</td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">wd</td><td>1344x690</td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr><td class="cname">fl</td><td></td><td class="on_logout">set (session)</td><td class="on_logout">1;</td></td><td></td></tr>
+		<tr><td class="cname">locale</td><td></td><td class="on_logout">set (expiry 2012)</td><td class="on_logout">en_US;</td></td><td></td></tr>
+		<tr><td class="cname">W</td><td></td><td class="on_logout">set (session)</td><td class="on_logout">1316972792;</td><td class="on_logout">1317032075; </td></tr>
+		<tr><td class="cname">openid_p</td><td></td><td></td><td></td><td class="new">1010459756371; </td></tr>
+		<tr><td class="cname">lsd</td><td></td><td></td><td></td><td class="new">YHdOE;</td></tr>
+		<tr><td class="cname">reg_fb_gate</td><td></td><td></td><td></td><td class="new">http://www.facebook.com/index.php? lh=399918d7284c74ee8821950e551b2af5 &eu=5tg6gnQhKKNd2MNZO99A0g</td></tr>
+		<tr><td class="cname">reg_fb_ref</td><td></td><td></td><td></td><td class="new">http://www.facebook.com/index.php? lh=399918d7284c74ee8821950e551b2af5 &eu=5tg6gnQhKKNd2MNZO99A0g</td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_4</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_5</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_6</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_7</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_8</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+		<tr class="deleted"><td class="cname">_e_LZFw_9</td><td></td><td>deleted</td><td class="clear"></td><td class="clear"></td></tr>
+	</tbody>
+</table>
+
+</body>
+</html>

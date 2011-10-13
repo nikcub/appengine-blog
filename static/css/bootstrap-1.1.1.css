@@ -626,7 +626,7 @@ ol {
 }
 li {
   line-height: 18px;
-  color: #808080;
+  color: #333;
 }
 ul.unstyled {
   list-style: none;
@@ -1987,4 +1987,65 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0;
+}
+
+body { padding-top: 75px; margin-bottom: 40px; color: #333;}
+h3 > a > img { height: 32px; width: 32px;}
+article > header > h1 > a {color: black;}
+blockquote > p { margin-bottom: 11px;}
+.screenshot { width: 600px; border: 2px solid silver;}
+
+.details {
+	list-style: none;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+.details > li {
+	float: left;
+	width: 100%;
+	height: 32px;
+	margin-bottom: 4px;
+}
+.details > li span.icon {
+	background-image: url('/img/sprites.png');
+	float: left;
+	width: 32px;
+	height: 32px;
+}
+.details > li a,
+.details > li a:hover,
+.details > li a:visited {
+	text-decoration: none;
+}
+.details > li span.bitbucket {
+	background-position: 0px 0px;
+}
+.details > li span.github {
+	background-position: 0px -32px;
+}
+.details > li span.gmail {
+	background-position: 0px -64px;
+}
+.details > li span.gplus {
+	background-position: 0px -96px;
+}
+.details > li span.feed {
+	background-position: 0px -128px;
+}
+.details > li span.twitter {
+	background-position: 0px -160px;
+}
+span.icon_nik {
+	float: left;
+	background-image: url('/img/sprites.png');
+	background-position: 0px -192px;
+	width: 125px;
+	height: 125px;
+	margin-bottom: 8px;
+}
+.details > li span.txt {
+	float: left;
+	margin-left: 32px;
+	line-height: 32px;
+	padding-left: 8px;
 }

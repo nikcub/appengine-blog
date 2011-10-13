@@ -1,0 +1,138 @@
+GET http://www.facebook.com/
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding:gzip,deflate,sdch
+Accept-Language:en-US,en;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Cookie:
+datr=_j4YTtXpGklznKteLeSuKD1i; lu=TgB5t6VTnD8y5V3wcKPGv9uw; p=236; pk=af478d0c13df8f77519651bfc6110373; a_user=500073819; a_xs=2629065d42d539987caac05032f14b07; sid=1; c_user=500073819; L=2; sct=1313155413; xs=1%3A232328b9937720ff0f189e5f17c41151; act=1316962370811%2F2; presence=EM316972753L236REp_5f5B73819F0X316972753570K0H1T0OQ0EsF0CEblFDacF0EutF0PCC; wd=1344x690
+Host:www.facebook.com
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_6) AppleWebKit/535.4 (KHTML, like Gecko) Chrome/16.0.886.1 Safari/535.4
+
+Cache-Control:private, no-cache, no-store, must-revalidate
+Content-Encoding:gzip
+Content-Type:text/html; charset=utf-8
+Date:Sun, 25 Sep 2011 17:45:55 GMT
+Expires:Sat, 01 Jan 2000 00:00:00 GMT
+P3P:CP="Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p"
+Pragma:no-cache
+Set-Cookie: wd=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+Transfer-Encoding:chunked
+X-Cnection:close
+X-FB-Server:10.64.22.63
+
+
+POST http://www.facebook.com/logout.php
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding:gzip,deflate,sdch
+Accept-Language:en-US,en;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Content-Length:104
+Content-Type:application/x-www-form-urlencoded
+Cookie:datr=_j4YTtXpGklznKteLeSuKD1i; lu=TgB5t6VTnD8y5V3wcKPGv9uw; p=236; pk=af478d0c13df8f77519651bfc6110373; a_user=500073819; a_xs=2629065d42d539987caac05032f14b07; sid=1; c_user=500073819; sct=1313155413; xs=1%3A232328b9937720ff0f189e5f17c41151; _e_LZFw_4=%5B%22LZFw%22%2C1316972788526%2C%22act%22%2C1316972788526%2C4%2C%22notifications%22%2C%22click%22%2C%22click%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%22ua_id%22%3A%22jewel%3Anotifications%22%7D%7D%2C340%2C28%2C0%2C980%2C16%5D; _e_LZFw_5=%5B%22LZFw%22%2C1316972788532%2C%22act%22%2C1316972788532%2C5%2C%22notifications%22%2C%22click%22%2C%22click%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%22ua_id%22%3A%22jewel%3Anotifications%22%7D%7D%2C340%2C28%2C0%2C980%2C16%5D; L=2; W=1316972788; presence=EM316972785L236N1Ac1_5dEp_5f5B73819F2X316972789317K0H1T0OQ0EsF0CEblFDacF0EutF0PCC; _e_LZFw_6=%5B%22LZFw%22%2C1316972789738%2C%22act%22%2C1316972789738%2C6%2C%22http%3A%2F%2Fwww.facebook.com%2Feditaccount.php%3Fref%3Dmb%26drop%22%2C%22click%22%2C%22click%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%7D%7D%2C1140%2C22%2C0%2C980%2C16%5D; _e_LZFw_7=%5B%22LZFw%22%2C1316972789749%2C%22act%22%2C1316972789749%2C7%2C%22http%3A%2F%2Fwww.facebook.com%2Feditaccount.php%3Fref%3Dmb%26drop%22%2C%22click%22%2C%22click%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%7D%7D%2C1140%2C22%2C0%2C980%2C16%5D; _e_LZFw_8=%5B%22LZFw%22%2C1316972789754%2C%22act%22%2C1316972789753%2C8%2C%22http%3A%2F%2Fwww.facebook.com%2Feditaccount.php%3Fref%3Dmb%26drop%22%2C%22a%22%2C%22click%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%7D%7D%2C1140%2C22%2C0%2C980%2C16%5D; act=1316972790935%2F11; _e_LZFw_9=%5B%22LZFw%22%2C1316972790936%2C%22act%22%2C1316972790935%2C11%2C%22http%3A%2F%2Fwww.facebook.com%2Flogout.php%22%2C%22form%22%2C%22submit%22%2C%22-%22%2C%22r%22%2C%22%2F%22%2C%7B%22ft%22%3A%7B%7D%2C%22gt%22%3A%7B%7D%7D%2C0%2C0%2C0%2C0%2C16%5D
+Host:www.facebook.com
+Origin:http://www.facebook.com
+Referer:http://www.facebook.com/
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_6) AppleWebKit/535.4 (KHTML, like Gecko) Chrome/16.0.886.1 Safari/535.4
+post_form_id:360385377c0481d1bb654674100d0dda
+fb_dtsg:AQCPQyID
+ref:mb
+h:bf0ed2e54fbcad0b1a67c55a32f88152
+
+
+Cache-Control:private, no-cache, no-store, must-revalidate
+Content-Length:0
+Content-Type:text/html; charset=utf-8
+Date:Sun, 25 Sep 2011 17:46:33 GMT
+Expires:Sat, 01 Jan 2000 00:00:00 GMT
+Location:http://www.facebook.com/index.php?lh=bf0ed2e54fbcad0b1a67c55a32f88152&eu=PQI4RcB3qExxYtIj8Y9QIQ
+P3P:CP="Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p"
+Pragma:no-cache
+Set-Cookie:_e_LZFw_4=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+_e_LZFw_5=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+_e_LZFw_6=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+_e_LZFw_7=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+_e_LZFw_8=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+_e_LZFw_9=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+c_user=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+fl=1; path=/; domain=.facebook.com; httponly
+L=2; path=/; domain=.facebook.com; httponly
+locale=en_US; expires=Sun, 02-Oct-2011 17:46:32 GMT; path=/; domain=.facebook.com
+lu=TAB5t6VTnD8y5V3wcKPGv9uw; expires=Tue, 24-Sep-2013 17:46:32 GMT; path=/; domain=.facebook.com; httponly
+pk=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+presence=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+s=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+sct=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+sid=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+W=1316972792; path=/; domain=.facebook.com
+xs=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+X-Cnection:close
+X-FB-Server:10.64.39.57
+
+
+Request URL:http://www.facebook.com/index.php?lh=bf0ed2e54fbcad0b1a67c55a32f88152&eu=PQI4RcB3qExxYtIj8Y9QIQ
+Request Method:GET
+Status Code:200 OK
+Request Headersview source
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding:gzip,deflate,sdch
+Accept-Language:en-US,en;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Cookie:datr=_j4YTtXpGklznKteLeSuKD1i; p=236; a_user=500073819; a_xs=2629065d42d539987caac05032f14b07; act=1316972790935%2F11; fl=1; L=2; locale=en_US; lu=TAB5t6VTnD8y5V3wcKPGv9uw; W=1316972792
+Host:www.facebook.com
+Referer:http://www.facebook.com/
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_6) AppleWebKit/535.4 (KHTML, like Gecko) Chrome/16.0.886.1 Safari/535.4
+Query String Parametersview URL encoded
+lh:bf0ed2e54fbcad0b1a67c55a32f88152
+eu:PQI4RcB3qExxYtIj8Y9QIQ
+
+Response Headersview source
+Cache-Control:private, no-cache, no-store, must-revalidate
+Content-Encoding:gzip
+Content-Type:text/html; charset=utf-8
+Date:Sun, 25 Sep 2011 17:46:33 GMT
+Expires:Sat, 01 Jan 2000 00:00:00 GMT
+P3P:CP="Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p"
+Pragma:no-cache
+Set-Cookie:fl=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+lsd=J1CeM; path=/; domain=.facebook.com
+reg_fb_gate=http%3A%2F%2Fwww.facebook.com%2Findex.php%3Flh%3Dbf0ed2e54fbcad0b1a67c55a32f88152%26eu%3DPQI4RcB3qExxYtIj8Y9QIQ; path=/; domain=.facebook.com
+reg_fb_ref=http%3A%2F%2Fwww.facebook.com%2Findex.php%3Flh%3Dbf0ed2e54fbcad0b1a67c55a32f88152%26eu%3DPQI4RcB3qExxYtIj8Y9QIQ; path=/; domain=.facebook.com
+Transfer-Encoding:chunked
+X-Cnection:close
+X-FB-Server:10.64.38.30
+
+
+After browser restart
+
+
+Request URL:http://www.facebook.com/
+Request Method:GET
+Status Code:200 OK
+Request Headersview source
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding:gzip,deflate,sdch
+Accept-Language:en-US,en;q=0.8
+Connection:keep-alive
+Cookie:p=236; locale=en_US; datr=_j4YTtXpGklznKteLeSuKD1i; openid_p=1010459756371; act=1317032073811%2F0; L=2; lu=TAYHFZUqqkdSRdlC0-Zz_m9g; W=1317032075; lsd=YHdOE; reg_fb_gate=http%3A%2F%2Fwww.facebook.com%2Findex.php%3Flh%3D399918d7284c74ee8821950e551b2af5%26eu%3D5tg6gnQhKKNd2MNZO99A0g; reg_fb_ref=http%3A%2F%2Fwww.facebook.com%2Findex.php%3Flh%3D399918d7284c74ee8821950e551b2af5%26eu%3D5tg6gnQhKKNd2MNZO99A0g
+Host:www.facebook.com
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_6) AppleWebKit/535.4 (KHTML, like Gecko) Chrome/16.0.886.1 Safari/535.4
+Response Headersview source
+Cache-Control:private, no-cache, no-store, must-revalidate
+Content-Encoding:gzip
+Content-Type:text/html; charset=utf-8
+Date:Mon, 26 Sep 2011 10:14:45 GMT
+Expires:Sat, 01 Jan 2000 00:00:00 GMT
+P3P:CP="Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p"
+Pragma:no-cache
+Set-Cookie:reg_fb_ref=http%3A%2F%2Fwww.facebook.com%2F; path=/; domain=.facebook.com
+W=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.facebook.com; httponly
+Transfer-Encoding:chunked
+X-Cnection:close
+X-FB-Server:10.64.166.44

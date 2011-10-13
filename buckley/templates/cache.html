@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} >> Admin >> Cache{% endblock %}
+
+{% block content %}
+<article>
+	<table id="admin_posts">
+		<thead>
+		<tr>
+			<td>filename</td>
+			<td>file mktime</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for file in files %}
+			<tr>
+				<td>{{ file.name }}</td>
+				<td>{{ file.mt|timesince }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</article>
+
+<article>
+	<table id="admin_posts">
+		<thead>
+		<tr>
+			<td>stub</td>
+			<td>memkey</td>
+			<td>cached</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for post in memcache %}
+			<tr>
+				
+				<td>
+				{% if post.post %}
+					<a href="/admin/cache_page/{{ post.stub }}">{{ post.stub }}</a>
+				{% else %}
+					model cache
+				{% endif %}
+				</td>
+				<td>{{ post.memkey }}</td>
+				<td>{{ post.cached }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	<p></p>
+	<h2>stats</h2>
+	<table>
+		<tr><td>Hits</td><td>{{ memstats.hits }}</td></tr>
+		<tr><td>Items</td><td>{{ memstats.items }}</td></tr>
+		<tr><td>Bytes</td><td>{{ memstats.bytes }}</td></tr>
+		<tr><td>oldest_item_age</td><td>{{ memstats.oldest_item_age }}</td></tr>
+		<tr><td>misses</td><td>{{ memstats.misses }}</td></tr>
+		<tr><td>byte_hits</td><td>{{ memstats.byte_hits }}</td></tr>
+	</table>
+</article>
+
+<article>
+	<p>
+		<form method="post" action="/admin/cache" id="admin_edit">
+			<button type="submit" name="action" value="files">regen files</button>
+			<button type="submit" name="action" value="mem">regen memcache</button>
+		</form>
+	</p>
+</article>
+{% endblock %}
