@@ -60,7 +60,7 @@ class Post(db.Model):
     return query.fetch(num)
 
   @classmethod
-  def get_posts_published_cached(self, num = 5, cache = False):
+  def get_posts_published_cached(self, num = 10, cache = False):
     dat_key = "%s.%s" % ('models', 'index')
     dat = memcache.get(dat_key)
     if dat is not None and cache == False:
@@ -93,11 +93,12 @@ class Post(db.Model):
   @classmethod
   def get_last(self, num = 5):
     # query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
-    query = self.all().filter('post_type = ', 'post').filter('status = ', 'published').order('-pubdate')
+    # query = self.all().filter('post_type = ', 'post').filter('status = ', 'published').order('-pubdate')
+    query = db.GqlQuery("select * from Post where post_type='post' and status='published' order by pubdate DESC")
     # query.filter('limit 5')
     # query.order('-pubdate')
     return query.fetch(num)
-      
+
   @classmethod
   def get_month(month, year):
     if not month:
