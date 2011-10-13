@@ -83,7 +83,7 @@ class Base(webapp.RequestHandler):
       css_file = 'nikcub.min.css'
     else:
       stat_hosts = ['nik-cubrilovic.appspot.com', 'webwall-proto.appspot.com', 'sketch-proto.appspot.com', 'hterms.appspot.com']
-      css_file = 'nikcub.min.css'
+      css_file = 'nikcub.26.min.css'
 
     additional = {
       'admin': users.is_current_user_admin(),
@@ -92,7 +92,7 @@ class Base(webapp.RequestHandler):
       'login': users.create_login_url('/'),
       'static_host': choice(stat_hosts),
       'css_file': css_file,
-      'css_ver': '025',
+      'css_ver': '26',
       'src': 'database',
       # 'title': self.conf_get('title')
     }

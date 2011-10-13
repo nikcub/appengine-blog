@@ -127,6 +127,16 @@ handlers:
   expiration: 1m
 
 # Static file mappings
+- url: /css/nikcub.([0-9]+).css
+  mime_type: text/css
+  static_files: static/css/nikcub.css
+  upload: static/css/nikcub.css
+  
+- url: /css/nikcub.([0-9]+).min.css
+  mime_type: text/css
+  static_files: static/css/nikcub.min.css
+  upload: static/css/nikcub.min.css
+  
 - url: /css
   mime_type: text/css
   expiration: 10000d
