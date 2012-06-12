@@ -4,67 +4,100 @@
 
 {% block content %}
 <article>
-	<table id="admin_posts">
+	<p>
+		<form method="post" action="/admin/cache" id="admin_edit">
+			<button type="submit" name="action" value="files" class="btn">regen files</button>
+			<button type="submit" name="action" value="mem" class="btn primary">regen memcache</button>
+		</form>
+	</p>
+</article>
+
+<article>
+	<h3>File Cache</h1>
+	<table id="admin_posts" class="zebra-striped">
 		<thead>
 		<tr>
-			<td>filename</td>
-			<td>file mktime</td>
+			<th>Filename</th>
+			<th>File mktime</th>
 		</tr>
 		</thead>
 		<tbody>
-		{% for file in files %}
-			<tr>
-				<td>{{ file.name }}</td>
-				<td>{{ file.mt|timesince }}</td>
-			</tr>
-		{% endfor %}
+		{% if files %}
+			{% for file in files %}
+				<tr>
+					<td>{{ file.name }}</td>
+					<td>
+					{% if file.mt %}
+						{{ file.mt|timesince }}
+					{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<tr><td colspan="2">No files cached.</td></tr>
+		{% endif %}
 		</tbody>
 	</table>
 </article>
 
 <article>
-	<table id="admin_posts">
+	<h3>Memcache</h1>
+	<table id="admin_posts" class="zebra-striped">
 		<thead>
 		<tr>
-			<td>stub</td>
-			<td>memkey</td>
-			<td>cached</td>
+			<th>Stub</th>
+			<th>Memkey</th>
+			<th>Cached</th>
 		</tr>
 		</thead>
 		<tbody>
-		{% for post in memcache %}
-			<tr>
-				
-				<td>
-				{% if post.post %}
-					<a href="/admin/cache_page/{{ post.stub }}">{{ post.stub }}</a>
-				{% else %}
-					model cache
-				{% endif %}
-				</td>
-				<td>{{ post.memkey }}</td>
-				<td>{{ post.cached }}</td>
-			</tr>
-		{% endfor %}
+		{% if memcache %}	
+			{% for post in memcache %}
+				<tr>
+					<td>
+					{% if post.post %}
+						<a href="/admin/cache_page/{{ post.stub }}">{{ post.stub }}</a>
+					{% else %}
+						model cache
+					{% endif %}
+					</td>
+					<td>{{ post.memkey }}</td>
+					<td>{{ post.cached }}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<tr><td colspan="2">No memory cache.</td></tr>
+		{% endif %}
 		</tbody>
-	</table>
-	<p></p>
-	<h2>stats</h2>
-	<table>
-		<tr><td>Hits</td><td>{{ memstats.hits }}</td></tr>
-		<tr><td>Items</td><td>{{ memstats.items }}</td></tr>
-		<tr><td>Bytes</td><td>{{ memstats.bytes }}</td></tr>
-		<tr><td>oldest_item_age</td><td>{{ memstats.oldest_item_age }}</td></tr>
-		<tr><td>misses</td><td>{{ memstats.misses }}</td></tr>
-		<tr><td>byte_hits</td><td>{{ memstats.byte_hits }}</td></tr>
 	</table>
 </article>
 
+<article>
+	<h3>Stats</h1>
+	<p></p>
+	<table class="zebra-striped">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Memcache</th>
+				<th>Files / CDN</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td>Hits</td><td>{{ memstats.hits }}</td><td>{{ filestats.hits }}</td></tr>
+			<tr><td>Items</td><td>{{ memstats.items }}</td><td>{{ filestats.hits }}</td></tr>
+			<tr><td>Bytes</td><td>{{ memstats.bytes }}</td><td>{{ filestats.hits }}</td></tr>
+			<tr><td>Oldest Item Age</td><td>{{ memstats.oldest_item_age }}</td><td>{{ filestats.hits }}</td></tr>
+			<tr><td>Misses</td><td>{{ memstats.misses }}</td><td>{{ filestats.hits }}</td></tr>
+			<tr><td>Byte Hits</td><td>{{ memstats.byte_hits }}</td><td>{{ filestats.hits }}</td></tr>
+		</tbody>
+	</table>	
+</article>
 <article>
 	<p>
 		<form method="post" action="/admin/cache" id="admin_edit">
-			<button type="submit" name="action" value="files">regen files</button>
-			<button type="submit" name="action" value="mem">regen memcache</button>
+			<button type="submit" name="action" value="files" class="btn">regen files</button>
+			<button type="submit" name="action" value="mem" class="btn primary">regen memcache</button>
 		</form>
 	</p>
 </article>

@@ -1,25 +1,45 @@
 {% extends "base_new.html" %}
 
-{% block title %}New Web Order - Nik Cubrilovic Blog - {{ post.title }}{% endblock %}
-{% block disqus_script %}
-var disqus_identifier = "{{ post.stub }}";
-// var disqus_developer = 1;
-var disqus_url = "http://nikcub.appspot.com/{{ post.stub }}";
-{% endblock %}
+{% block title %}New Web Order - {{ post.title }}{% endblock %}
+
 
 {% block content %}
 {% if post %}
 <article> 
 	<header> 
 		<h1>{{ post.title }}</h1>
-		<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time>
-			<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">#</a>
+		<time datetime="{{ post.pubdate|tformat("Y-m-d") }}" pubdate>{{ post.pubdate|tformat("jS F Y") }}</time>
+			<a href="/posts/{{ post.stub }}" rel="bookmark" title="{{ post.title }}">#</a>
 	</header>
 	<p>{{ post.content_html }}</p>
 
 	<p><a href="http://nikcub.appspot.com/{{ post.stub }}#disqus_thread">Comments</a></p>
-	<div id="disqus_thread" style="margin-top: 4em;"></div>
 
+	<article><h3>Recent Posts</h3></article>
+	
+{% for post in posts %}	
+	<article> 
+		<header> 
+			<time datetime="{{ post.pubdate|tformat("Y-m-d") }}" pubdate>{{ post.pubdate|timesince }} ago</time> - 
+			<b> 
+				<a href="/posts/{{ post.stub }}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+			</b> 
+		</header>
+	</article>
+{% endfor %}
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4276078067131368";
+/* bottom banner */
+google_ad_slot = "1511784399";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+	<div class="bottom_ad">
+		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>
+	<div id="disqus_thread" style="margin-top: 4em;"></div>
 </article>
 {% endif %}
 {% endblock %}
@@ -27,8 +47,8 @@ var disqus_url = "http://nikcub.appspot.com/{{ post.stub }}";
 {% block scripts %}
 <script type="text/javascript">
 var disqus_shortname = 'nikcub';
-var disqus_identifier = 'http://nikcub.appspot.com' + window.location.pathname;
-var disqus_url = 'http://nikcub.appspot.com' + window.location.pathname;
+var disqus_identifier = 'http://nikcub.appspot.com/{{ post.stub }}';
+var disqus_url = 'http://nikcub.appspot.com/{{ post.stub }}';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

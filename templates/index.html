@@ -4,23 +4,22 @@
 
 {% block content %}
 {% for post in posts %}
-	{% if forloop.first %}
+	{% if loop.first %}
+	<article><h3>Latest Post - {{ post.pubdate|timesince }} ago</h3></article>
 	<article> 
 		<header> 
-			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|date:"jS F Y" }}</time> 
 			<h1> 
-				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+				<a href="/posts/{{ post.stub }}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
 			</h1> 
 		</header>
-		<p>{{ post.content_html }}</p>
 	</article>
 	<article><h3>Older Posts</h3></article>
 	{% else %}
 	<article> 
 		<header> 
-			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> - 
+			<time datetime="{{ post.pubdate|tformat("Y-m-d") }}" pubdate>{{ post.pubdate|timesince }} ago</time> - 
 			<b> 
-				<a href="/{% firstof post.stub post.key %}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
+				<a href="/posts/{{ post.stub }}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a> 
 			</b> 
 		</header>
 	</article>

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DS="../data/nikcub.datastore"
-DH="../data/nikcub.datastore.history"
-BS="../data/nikcub.blobstore"
+DS=".data/nikcub.datastore"
+DH=".data/nikcub.history.datastore"
+BS=".data/nikcub.blobstore"
 IP=$1
 PORT="8090"
 PP=`whereis python`

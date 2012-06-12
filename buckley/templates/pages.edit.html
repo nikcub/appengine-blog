@@ -9,7 +9,7 @@
 		<h2>Edit Post</h2>
 	</header>
 	<p>
-		<form method="post" action="/admin/pages/edit/{{ post.key}}" id="admin_edit">
+		<form method="post" action="/admin/pages/edit/{{ post.key() }}" id="admin_edit">
 			<input type="text" name="title" value="{{ post.title }}"><br />
 			<input type="text" name="stub" value="{{ post.stub }}"><br />
 			<textarea name="content">{{ post.content }}</textarea><br />

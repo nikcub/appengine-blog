@@ -1,0 +1,5 @@
+
+ * setup new domain nikcub.com
+ * redirect index, about, archive and old posts using a 301 from /$1 to nikcub.com/$1
+ 
+ 

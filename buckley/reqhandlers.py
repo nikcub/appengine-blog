@@ -1,19 +1,41 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:ts=2:sw=2:expandtab
+#
+# Copyright (c) 2012, Nik Cubrilovic. All rights reserved.
+#
+# <nikcub@gmail.com> <http://nikcub.appspot.com>  
+#
+# Licensed under a BSD license. You may obtain a copy of the License at
+#
+#     http://nikcub.appspot.com/bsd-license
+#
+"""
+  Buckley - reqhandlers.py
+  
+  Base Request handlers used by controllers
+
+"""
+
 import os
 import logging
 import traceback
 import sys
 import cgi
 import datetime
-from random import choice
 
+from vendor import jinja2
 from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.api import memcache
-from google.appengine.ext.webapp import template
+
+from django.utils.timesince import timesince
+from django.utils.dateformat import format as django_format
+
 from config import config
 import serialize
-from application import *
+from application import AppAuthError
 
 class Base(webapp.RequestHandler):
   
@@ -31,20 +53,21 @@ class Base(webapp.RequestHandler):
 
   def render_feed(self, template_name, vars, response_code = 200, response_type = False):
     vars['buildDate'] = datetime.datetime.now()
-    content = template.render(self.get_template_path(template_name, 'xml'), vars)
-    self.response.clear()
-    self.response.headers['Content-Type'] = "application/%s; charset=utf-8" % ('xml')
-    self.response.set_status(response_code)
-    self.response.out.write(content)
+    content = self.render_jinja(self.get_template_path(template_name, 'xml'), vars)
+    headers = [('Content-Type', "application/%s; charset=utf-8" % ('xml'))]
+    return self.render_content(content, response_code, headers)
         
   def render_error(self, message = False, code = 404):
-    self.render('error', { 
+    return self.render('error', { 
       'code': '%d - %s' % (code, self.response.http_status_message(code)), 
       'message': message 
     }, code)
 
-  def render_content(self, content, response_code = 200):
+  def render_content(self, content, response_code = 200, headers = []):
     self.response.clear()
+    if len(headers) > 0:
+      for hn, hv in headers:
+        self.response.headers[hn] = hv
     self.response.set_status(response_code)
     self.response.out.write(content)
     
@@ -58,7 +81,8 @@ class Base(webapp.RequestHandler):
       content = serial_f(vars)
       self.response.headers['Content-Type'] = "application/%s; charset=utf-8" % (response_type)
     else:
-      content = template.render(self.get_template_path(template_name, response_type), vars)
+      # content = template.render(self.get_template_path(template_name, response_type), vars)
+      content = self.render_jinja(self.get_template_path(template_name, response_type), vars)
     return content
 
   def get_plugin_vars(self, vars):
@@ -82,25 +106,46 @@ class Base(webapp.RequestHandler):
       stat_hosts = [host_full]
       css_file = 'nikcub.min.css'
     else:
-      stat_hosts = ['nik-cubrilovic.appspot.com', 'webwall-proto.appspot.com', 'sketch-proto.appspot.com', 'hterms.appspot.com']
-      css_file = 'nikcub.26.min.css'
+      stat_hosts = ['nik-cubrilovic.appspot.com', 'sketch-proto.appspot.com', 'hterms.appspot.com']
+      css_file = 'nikcub.027.min.css'
 
     additional = {
       'admin': users.is_current_user_admin(),
       'user': users.get_current_user(),
       'logout': users.create_logout_url('/'),
       'login': users.create_login_url('/'),
-      'static_host': choice(stat_hosts),
-      'css_file': css_file,
-      'css_ver': '26',
+      'static_host': 'static.nikcub.com',
+      'css_file': 'nikcub.030.min.css',
+      'css_ver': '31',
       'src': 'database',
       # 'title': self.conf_get('title')
     }
     return dict(zip(additional.keys() + vars.keys(), additional.values() + vars.values()));
 
+  def render_jinja(self, template_path, template_vars):
+    # Split the full path as needed for Jinja
+    template_dir = os.path.dirname(template_path)
+    template_name = os.path.basename(template_path)
+    #  and run it
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
+    # from sketch.utils import timesince
+    env.filters['timesince'] = timesince
+    env.filters['tformat'] = django_format
+    jinja_template = env.get_template(template_name)
+    return jinja_template.render(template_vars)
+
+  def render_django(self, template_path, template_vars):
+    """
+      render a django template
+      
+      TODO: convert to use_library()
+    """
+    return django_template.render(template_path, template_vars)
+
+
   def render_cache(self, template_name, vars):
     template_path = os.path.join(os.path.dirname(__file__), '..', 'templates', template_name + '.html')
-    content = template.render(template_path, self.get_template_vars(vars))
+    content = self.render_django(template_path, self.get_template_vars(vars))
     return content
 
   def get_template_path(self, template_name, template_format = 'html'):
@@ -135,14 +180,18 @@ class Base(webapp.RequestHandler):
   def slugify(self, value):
     value = re.sub('[^\w\s-]', '', value).strip().lower()
     return re.sub('[-\s]+', '-', value)
-  
+
+
 class Admin(Base):
   def initialize(self, request, response):
     self.request = request
     self.response = response
     user = users.get_current_user()
-    if not user or not users.is_current_user_admin():
-      raise AppAuthError
+    is_admin = users.is_current_user_admin()
+    if user == None or is_admin != True:
+      login_url = users.create_login_url('/admin')
+      raise AppAuthError('login required')
+      return False
       
   def is_admin():
     return users

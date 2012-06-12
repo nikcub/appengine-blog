@@ -1,0 +1,5 @@
+I forgot what I am supposed to put here. Need to read the spec.
+
+I generate this blog as static files hosted on appengine using Python. The project is here:
+
+http://github.com/nikcub/nikcub-blog

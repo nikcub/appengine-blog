@@ -2,7 +2,7 @@
 <h5>Most Recent Posts</h5>
 <ul class="{% firstof conf.css_class "most_recent" %}">
 {% for post in posts %}
-	<li><a href="/{{ post.stub}}">{{ post.title}}</a></li>
+	<li><a href="/posts/{{ post.stub}}">{{ post.title}}</a></li>
 {% endfor %}
 </ul>
 {% endif %}

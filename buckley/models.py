@@ -1,9 +1,13 @@
-import sys, datetime, logging
+import sys
+import datetime
+import logging
+
 from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.api import memcache
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-from buckley.datatypes import *
+
+from buckley.datatypes import HtmlFromMarkdownProperty, StubFromTitleProperty
 
 class Post(db.Model):
   author = db.UserProperty()
@@ -17,6 +21,8 @@ class Post(db.Model):
   new_stub = StubFromTitleProperty(source = title, default = None)
   stub = db.StringProperty()
   permalink = db.StringProperty()
+  
+  featured = db.BooleanProperty()
   pubdate = db.DateTimeProperty(auto_now_add=True)
   
   def create_new(title, content, categories = []):
@@ -56,12 +62,12 @@ class Post(db.Model):
   @classmethod
   def get_posts_published(self, num = 5):
     # query = db.Query(Post).filter('post_type = 'post'').order('-pubdate')
-    query = self.all().filter('post_type = ', 'post').filter('status = ', 'published').order('-pubdate')
+    query = db.GqlQuery("select * from Post where post_type='post' and status='published' order by pubdate DESC")
     return query.fetch(num)
 
   @classmethod
-  def get_posts_published_cached(self, num = 10, cache = False):
-    dat_key = "%s.%s" % ('models.' + str(num), 'index')
+  def get_posts_published_cached(self, num=10, cache=False, key='index'):
+    dat_key = "%s.%s" % ('models', key)
     dat = memcache.get(dat_key)
     if dat is not None and cache == False:
       return dat, 'memcache'

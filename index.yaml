@@ -28,3 +28,9 @@ indexes:
   - name: status
   - name: pubdate
     direction: desc
+
+- kind: Post
+  properties:
+  - name: status
+  - name: pubdate
+    direction: desc

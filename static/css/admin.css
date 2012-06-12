@@ -298,3 +298,11 @@ body > #admin_nav a:hover {
 	text-decoration: underline;
 /*	background: red;*/
 }
+
+table {
+  width: 60%;
+}
+
+thead {
+  border-bottom: 2px solid black;
+}

@@ -5,7 +5,7 @@
 {% block content %}
 <article>
 	<header>
-		<h2>{{ post_type|capfirst }}</h2>
+		<h2>{{ post_type|capitalize }}</h2>
 	</header>
 	<table id="admin_posts">
 		<thead>
@@ -27,9 +27,9 @@
 				<td>{{ post.title }}</td>
 				<td>{{ post.post_type }}</td>
 				<td>{{ post.status }}</td>
-				<td>{{ post.pubdate|date:"j M Y" }}</td>
+				<td>{{ post.pubdate|tformat("j M Y") }}</td>
 				<td>{{ post.author }}</td>
-				<td><a href="/admin/pages/edit/{{ post.key }}">edit</a></td>
+				<td><a href="/admin/pages/edit/{{ post.key() }}">edit</a></td>
 				<td><a href="/{{ post.stub }}">view</a></td>
 		{% endfor %}
 		</tbody>
@@ -38,7 +38,7 @@
 
 <article>
 	<header>
-		<h2>Add {{ post_type|capfirst }}</h2>
+		<h2>Add {{ post_type|capitalize }}</h2>
 	</header>
 	<p>
 		<form method="post" action="/admin/pages" id="admin_edit">

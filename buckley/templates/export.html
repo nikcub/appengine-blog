@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} >> Admin >> Export{% endblock %}
+
+{% block content %}
+<article>
+	<p>
+		<form method="post" action="/admin/export" id="admin_edit">
+			<button type="submit" name="action" value="export_files" class="btn">export to files</button>
+		</form>
+	</p>
+</article>
+
+{% if message_log %}
+	<div>{{message_log}}</div>
+{% endif %}
+
+<article>
+	<h3>Post Export</h1>
+	<table id="admin_posts" class="zebra-striped">
+		<thead>
+		<tr>
+			<!-- <th>Key</th> -->
+			<th>Stub</th>
+			<th>Type</th>
+			<th>Status</th>
+			<th>Pubdate</th>
+			<th>Export</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% if posts %}
+			{% for post in posts %}
+				<tr>
+					<!-- <td>{{ post.key() }}</td> -->
+					<td>{{ post.stub }}</td>
+					<td>{{ post.post_type}}</td>
+					<td>{{ post.status }}</td>
+					<td>{{ post.pubdate }}</td>
+					<td>
+					{% if exports[post.stub].exported %}
+						{{exports[post.stub].export_dtime}}
+					{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<tr><td colspan="2">No files exported.</td></tr>
+		{% endif %}
+		</tbody>
+	</table>
+</article>
+
+{% endblock %}

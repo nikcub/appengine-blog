@@ -8,34 +8,36 @@
 	<meta name="author" value="Nik Cubrilovic">
 	<meta name="description" value="Blog of Nik Cubrilovic">
 	<meta name="generator" value="Unicorn v0.1">
-	<link id="css-reset" rel="stylesheet" href="/css/reset.css?004" type="text/css">
-	<link id="css-admin" rel="stylesheet" href="/css/admin.css?004" type="text/css">
+	<link id="css-reset" rel="stylesheet" href="/css/bootstrap.admin.css?004" type="text/css">
+	<!-- <link id="css-admin" rel="stylesheet" href="/css/admin.css?004" type="text/css"> -->
+	<style>
+		body {
+			padding-top: 70px;
+		}
+	</style>
 	<script src="/js/jquery-1.4.3.min.js" type="text/javascript"></script>
 </head>
 <body>
-<header>
-    <h1><a href="/">Buckley</a></h1>      
-	<nav>
-		<ul>
-			<li><a href="#">{{ user.nickname }}</a></li>
-		</ul>
-	</nav>
-</header>
-<aside id="admin_nav">
-	<nav>
-		<ul>
+<div class="topbar"> 
+<div class="fill"> 
+	<div class="container">
+		<h3><a href="/">Buckley Admin</a></h3> 
+		<ul class="nav">
 			<li><a href="/admin">Settings</a></li>
 			<li><a href="/admin/posts">Posts</a></li>
 			<li><a href="/admin/pages">Pages</a></li>
 			<li><a href="/admin/comments">Comments</a></li>
 			<li><a href="/admin/cache">Cache</a></li>
+			<li><a href="/admin/export">Export</a></li>
+			<li><a href="#">{{ user.nickname }}</a></li>
 			<li><a href="{{ logout }}">Logout</a></li>
 		</ul>
-	</nav>
-</aside>
+	</div>
+</div>
+</div>
+</div>
+<div class="container">
 {% block content %}{% endblock %}
-<footer>
-	<p>&copy; 2010 Buckley</p>
-</footer>
+</div>
 </body>
 </html>

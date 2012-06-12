@@ -1,13 +1,12 @@
 {% extends "base_new.html" %}
 
-{% block title %}New Web Order - Nik Cubrilovic Blog{% endblock %}
+{% block title %}New Web Order - Nik Cubrilovic Blog Archive{% endblock %}
 
 {% block content %}
-
 {% for post in posts %}
 	<article> 
 		<header> 
-			<time datetime="{{ post.pubdate|date:"Y-m-d" }}" pubdate>{{ post.pubdate|timesince }} ago</time> - <b><a href="/{% firstof post.stub post.key %}" rel="bookmark" title="$post.title">{{ post.title }}</a></b> 
+			<time datetime="{{ post.pubdate|tformat("r") }}" pubdate>{{ post.pubdate|timesince }} ago</time> - <b><a href="/posts/{{ post.stub }}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a></b> 
 		</header>
 	</article>
 {% endfor %}

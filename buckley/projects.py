@@ -2,11 +2,6 @@ import logging
 import reqhandlers 
 from models import *
 
-class Main(reqhandlers.Base):
-	"Defines projects"
-	def get(self, path):
-		self.render('projects', {'tab_projects': True})
-
 class PasswordGen(reqhandlers.Base):
   def get(self):
     self.render('password-gen', {})
@@ -53,7 +48,6 @@ class TrackingCookie(reqhandlers.Base):
     
   def post(self):
 
-    
     if 'If-Match' in self.request.headers:
       etag = self.request.headers['If-Match']
     else:
